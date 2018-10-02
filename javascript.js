@@ -1,10 +1,5 @@
 var products = new Array();
 
-function isANumber(str){
-  return !/\D/.test(str);
-}
-
-
 function loadDoc() {
     /*
   var xhttp = new XMLHttpRequest();
@@ -117,10 +112,6 @@ function activeTab(tab) {
     }
 }
 
-function translateElement(id, end) {
-    document.getElementById(id).style.transform = "translateX(" + end + "%)";
-}
-
 function openNav() {
     openOverlay("sideNavOverlay");
     translateElement("sidenav", 0);
@@ -204,10 +195,8 @@ function closeNav() {
         document.getElementById('navExtended').style.display = "block";
     }, 500);  
 
-    document.getElementById('searchOverlay').style.display = "none";
-    document.getElementById("searchBar").style.backgroundColor = "rgba(0,0,0,0)";
-    document.getElementById("searchBar").style.color = "#fff";
-    document.getElementById("magnify").style.color = "#fff";
+    closeSearch();
+    
     displayImages(0);
     
 
@@ -217,12 +206,32 @@ function closeNav() {
 
     closeOverlay("sideNavOverlay");
 }
+
+function closeSearch() {
+    document.getElementById('searchOverlay').style.display = "none";
+    document.getElementById("searchBar").style.backgroundColor = "rgba(0,0,0,0)";
+    document.getElementById("searchBar").style.color = "#fff";
+    document.getElementById("magnify").style.color = "#fff";
+}
+
 function activateSearch() {
     document.getElementById("searchBar").style.backgroundColor = "#fff";
     document.getElementById("searchBar").style.color = "rgba(0,0,0,0.87)";
     document.getElementById("magnify").style.color = "rgba(0,0,0,0.87)"
     document.getElementById("searchOverlay").style.display = "block";
 }
+
+
+function translateElement(id, end) {
+    document.getElementById(id).style.transform = "translateX(" + end + "%)";
+}
+
+
+function isANumber(str) {
+    return !/\D/.test(str);
+}
+
+
 
 function getEngine() { //Redirects users using IE or Safari to the chrome download page
     var isIE = /*@cc_on!@*/false || !!document.documentMode;
