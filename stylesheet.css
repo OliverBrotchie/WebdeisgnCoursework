@@ -5,6 +5,8 @@ html {
     color: rgba(0,0,0,0.87);
     text-rendering: optimizeLegibility;
     font-size: 1rem;
+    width:100vw;
+    overflow-x:hidden;
 }
 .depth-0 {
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
@@ -54,9 +56,17 @@ body {
     text-align: center
 }
 
-.noStyle{
-    text-decoration:none;
-    color:#fff;
+.noStyle {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+#navLinks{
+    height:100%;
+    padding:0px 0px 0px 20px;
+    border:0px;
+    overflow:hidden;
 }
 
 @media only screen and (min-width: 993px) {
@@ -84,6 +94,9 @@ body {
        	margin-right: auto !important;
         position: absolute !important;
         transform: translateX(40vw) !important;
+    }
+    .sidenav {
+        width: 20vw !important;
     }
 }
 
@@ -114,6 +127,9 @@ body {
     .topnav input[type=text] {
         width: 180px;
     }
+    .sidenav{
+        width:40vw;
+    }
 }
 
 
@@ -140,6 +156,10 @@ body {
         position: absolute;
         transform: translateX(17vw);
         font-size: 2rem;
+    }
+
+    .sidenav {
+        width: 60vw;
     }
 }
 
@@ -412,17 +432,13 @@ body {
 
     }
 
-    .active {
-        background-color: #ab9a6f;
-        color: #fff;
-    }
 
     .tab-link {
         background-color: transparent;
         display: block;
         width: 100%;
         height: 100%;
-		font-size:1 rem;
+		font-size:1rem;
         transition: color .28s ease;
         text-decoration: none;
 		line-height:48px;
@@ -439,13 +455,20 @@ body {
 }
 
 
-    li {
-        float: none;
-        line-height: 48px;
-        text-align: center;
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
-    }
+li {
+    float: none;
+    line-height: 48px;
+    text-align: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    cursor: pointer;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
 
     p {
         color: rgba(0,0,0,0.77);
@@ -467,20 +490,28 @@ body {
         line-height: 66px;
     }
 
-    .nav-btn {
-        float: left;
-        display: block;
-        text-align: center;
-        padding-left: 24px;
-        text-decoration: none;
-        font-size: 17px;
-        color: #fff;
-        font-weight: 500;
-        height: auto;
-        line-height: 48px;
-        -webkit-font-smoothing: antialiased;
+.nav-btn {
+    height:66px;
+    float: left;
+    display: block;
+    text-align: center;
+    padding-left: 12px;
+    padding-right:12px;
+    text-decoration: none;
+    font-size: 17px;
+    color: #fff;
+    font-weight: 500;
+    line-height: inherit;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+    .nav-btn:hover {
+        background-color: rgba(0,0,0,0.1);
     }
-
     .section-white {
         padding-top: 1rem;
         width: 100%;
@@ -489,78 +520,84 @@ body {
         
     }
 
-    .topnav input[type=text] {
-        display: block;
-        float: right;
-        line-height: inherit;
-        padding-left: 1rem;
-        font-size: 3rem;
-        border: none;
-        background-color: inherit;
-        outline: none;
-        -webkit-appearance: textfield;
-        color: inherit;
-        font: inherit;
-        text-align: left;
-    }
+.topnav input[type=text] {
+    display: block;
+    float: right;
+    line-height: inherit;
+    padding-left: 1rem;
+    font-size: 3rem;
+    border: none;
+    background-color: inherit;
+    outline: none;
+    -webkit-appearance: textfield;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+}
 
-    .input-field {
-        height: 66px;
-        margin-bottom: 1em;
-        display: block;
+.input-field {
+    height: 66px;
+    margin-bottom: 1em;
+    display: block;
+    color: #fff;
+    line-height: 64px;
+    font-size: 14px;
+    background-color: transparent;
+    padding-left: 1em;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+    .input-field{
+
+    }
+    .input-field label {
+        position: relative;
+        top: 1.2rem;
+        font-size: 1rem;
+        cursor: text;
         color: #fff;
-        line-height: 64px;
-        font-size: 14px;
-        background-color: transparent;
-        padding-left: 1em;
-        padding-top: 0;
-        padding-bottom: 0;
+
     }
 
-        .input-field label {
-            position: relative;
-            top: 1.2rem;
-            font-size: 1rem;
-            cursor: text;
-            color: #fff;
-        }
+.sidenav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    position: fixed;
+    background-color: #424242;
+    color: #fff;
+    z-index: 997;
+    overflow-y: auto;
+    will-change: transform;
+    transition: 0.5s;
+    list-style-type: none;
+    padding: 0;
+    white-space: nowrap;
+    transform: translateX(-105%);
+}
 
-    .sidenav {
-        position: fixed;
-        width: 0px;
-        left: 0;
-        top: 0;
-        height: 100%;
-        margin: 0;
-        position: fixed;
-        background-color: #424242;
-        color: #fff;
-        z-index: 997;
-        overflow-y: auto;
-        will-change: transform;
-        transition: 0.5s;
-        list-style-type: none;
-        padding: 0;
-        white-space: nowrap;
-    }
-
-    .sidenav-extended {
-        float: left;
-        position: fixed;
-        width: 0px;
-        top: 0;
-        height: 100%;
-        margin: 0;
-        position: fixed;
-        background-color: #fff;
-        overflow-y: auto;
-        will-change: transform;
-        list-style-type: none;
-        padding: 0;
-        white-space: nowrap;
-        left: 20vw;
-        z-index: 997;
-    }
+.sidenav-extended {
+    display:block;
+    float: left;
+    position: fixed;
+    width: 60vw;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    background-color: #fff;
+    overflow-y: auto;
+    will-change: transform;
+    list-style-type: none;
+    padding: 0;
+    white-space: nowrap;
+    left: 20vw;
+    transition: 0.5s;
+    z-index: 996;
+    transform: translateX(-155%);
+}
 
     #sideNavOverlay {
         position: fixed;
@@ -575,13 +612,13 @@ body {
         display: none;
     }
 
-    .fadein {
-        animation-name: fadeInOpacity;
-        animation-iteration-count: 1;
-        animation-timing-function: ease-in;
-        animation-duration: 0.5s;
-        opacity: 1;
-    }
+.fadeIn {
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+    opacity: 1;
+}
 
 
     @keyframes fadeInOpacity {
@@ -593,6 +630,25 @@ body {
             opacity: 1;
         }
     }
+
+.fadeOut {
+    animation-name: fadeOutOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.5s;
+    opacity: 0;
+}
+
+
+@keyframes fadeOutOpacity {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
 
     #searchOverlay {
         position: fixed;
@@ -709,6 +765,7 @@ body {
         letter-spacing: 8px;
         padding: 0;
         float: left;
+        cursor:default;
     }
 
     .caption-large {
@@ -784,9 +841,16 @@ body {
         letter-spacing: 10px;
     }
 
-    a {
-        text-decoration: none;
-    }
+a {
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-transition: background-color .3s;
+    transition: background-color .3s;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
 
     .footer {
         background-color: #009688;
@@ -842,4 +906,11 @@ body {
     font-size: 2rem;
     cursor: pointer;
     margin-top:5px;
+}
+
+.active {
+    color: #fff;
+    background-color: #ab9a6f;
+    -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }

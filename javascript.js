@@ -6,6 +6,7 @@ function isANumber(str){
 
 
 function loadDoc() {
+    /*
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -14,9 +15,10 @@ function loadDoc() {
   };
   xhttp.open("GET", "productlist.text", true);
   xhttp.send();
+    */
 }
 
-
+/*
 function showProducts(text) {
 	var result = text.split(";");
 	for(i=0;i<=result.length-1;i++){
@@ -26,13 +28,14 @@ function showProducts(text) {
 	}
 	
 	displayProducts();
+
 }
 
 function displayProducts(){
-	for(i=1;i<3;i++){
+	/*for(i=1;i<3;i++){
 		document.getElementById(i + "-i").src = products[i-1][1];
 	}
-}
+}*/
 
 
 function activeTab(tab) {
@@ -114,55 +117,48 @@ function activeTab(tab) {
     }
 }
 
-
-
-function openBikes() {
-    document.getElementById("sidenav").style.width = "20vw";
-    document.getElementById("sideNavOverlay").style.display = "block";
-    document.getElementById("sideNavOverlay").classList.add('fadein');
+function translateElement(id, end) {
+    document.getElementById(id).style.transform = "translateX(" + end + "%)";
 }
 
-function openSNav() {
-    document.getElementById("s-sidenav").style.width = "60vw";
-	
-	if(window.screen.width<601){
-		document.getElementById("s-sidenav").style.width = "60vw";
-	}
-	else{
-		document.getElementById("s-sidenav").style.width = "40vw";
-	}
+function openNav() {
+    openOverlay("sideNavOverlay");
+    translateElement("sidenav", 0);
+}
 
-    document.getElementById("sideNavOverlay").style.display = "block";
-    document.getElementById("sideNavOverlay").classList.add('fadein');
+function openNav(nav) {
+    translateElement(nav, 0);
+    openOverlay("sideNavOverlay");
 }
 
 function openModal(productID) {
-    document.getElementById("modalOverlay").style.display = "block";
     document.getElementById("modal").style.display = "block";
 	document.getElementById("modal-footer").style.display = "block";
-    document.getElementById("modalOverlay").classList.add('fadein');
+    openOverlay("modalOverlay");
 }
 
 
 function openExtender(type) {
-
-    document.getElementById("navExtended").style.width = "60vw";
+    translateElement("navExtended", 0);
 	
 	for(i=1;i<6;i++){	
 		document.getElementById("snav-" + i).classList.remove('active');
 	}
 	
-	document.getElementById("snav-"+type).classList.add('active');
+    document.getElementById("snav-" + type).classList.add('active');
+
 	displayImages(6);
 }
 
 function displayImages(number) {
+    
     for (i = 1; i <= 6; i++) {
         document.getElementById(i).style.display = "none";
     }
     for (i = 1; i <= number; i++) {
         document.getElementById(i).style.display = "inherit";
     }
+    
 }
 
 function closeModal() {
@@ -170,27 +166,56 @@ function closeModal() {
 	document.getElementById("modal-footer").style.display = "none";
     activeTab(1);
     activeTab('xxsmall')
+
     document.getElementById("modalOverlay").style.display = "none";
 
 }
 
-function closeNav() {
-    document.getElementById("sidenav").style.width = "0";
-    document.getElementById("navExtended").style.width = "0";
-    document.getElementById("searchOverlay").style.display = "none";
+function closeOverlay(overlayID) {
+    document.getElementById(overlayID).classList.add('fadeOut');
+
+    setTimeout(function () {
+        document.getElementById(overlayID).style.display = "none";
+        document.getElementById(overlayID).classList.remove('fadeOut');
+
+    }, 500);  
     
+}
+
+function openOverlay(overlayID) {
+    document.getElementById(overlayID).style.display = "block";
+
+    document.getElementById(overlayID).classList.add('fadeIn');
+
+    setTimeout(function () {
+        document.getElementById(overlayID).classList.remove('fadeIn');
+
+    }, 500);  
+}
+
+
+function closeNav() {
+    translateElement("sidenav", -105);
+    translateElement("s-sidenav", -105);
+    translateElement("navExtended", -155);
+    document.getElementById('navExtended').style.display = "none";
+
+    setTimeout(function () {
+        document.getElementById('navExtended').style.display = "block";
+    }, 500);  
+
+    document.getElementById('searchOverlay').style.display = "none";
     document.getElementById("searchBar").style.backgroundColor = "rgba(0,0,0,0)";
     document.getElementById("searchBar").style.color = "#fff";
     document.getElementById("magnify").style.color = "#fff";
-    document.getElementById("sideNavOverlay").classList.remove('fadein');
     displayImages(0);
-    document.getElementById("sideNavOverlay").style.display = "none";
-    document.getElementById("s-sidenav").style.width = "0";
-	
+    
+
 	for(i=1;i<6;i++){	
 		document.getElementById("snav-" + i).classList.remove('active');
-	}
+    }
 
+    closeOverlay("sideNavOverlay");
 }
 function activateSearch() {
     document.getElementById("searchBar").style.backgroundColor = "#fff";
