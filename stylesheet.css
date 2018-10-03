@@ -50,12 +50,16 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    margin:0px;
+    padding:0px;
 }
 
 * {
     box-sizing: border-box;
-    text-align: center
+    text-align: center;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
 
 .noStyle {
     text-decoration: none;
@@ -86,7 +90,7 @@ body {
         display: block !important;
     }
 
-    .topnav input[type=text] {
+    .topNav input[type=text] {
         width: 220px !important;
     }
 	
@@ -125,7 +129,7 @@ body {
         transform: translateX(42vw);
     }
 
-    .topnav input[type=text] {
+    .topNav input[type=text] {
         width: 180px;
     }
     .sidenav{
@@ -510,9 +514,11 @@ li {
     transition-timing-function: ease;
     transition-delay: 0s;
 }
+
     .nav-btn:hover {
-        background-color: rgba(0,0,0,0.1);
+        background-color: rgba(0, 0, 0, 0.1);
     }
+
     .section-white {
         padding-top: 1rem;
         width: 100%;
@@ -521,7 +527,7 @@ li {
         
     }
 
-.topnav input[type=text] {
+.topNav input[type=text] {
     display: block;
     float: right;
     line-height: inherit;
@@ -541,7 +547,6 @@ li {
     margin-bottom: 1em;
     display: block;
     color: #fff;
-    line-height: 64px;
     font-size: 14px;
     background-color: transparent;
     padding-left: 1em;
@@ -549,18 +554,16 @@ li {
     padding-bottom: 0;
 }
 
-    .input-field{
-
-    }
-    .input-field label {
-        position: relative;
-        top: 1.2rem;
-        font-size: 1rem;
-        cursor: text;
+    .input-field i {
+        height: 66px;
+        float: left;
+        display: block;
+        text-align: center;
+        text-decoration: none;
         color: #fff;
-
+        font-weight: 500;
+        line-height: inherit;
     }
-
 .sidenav {
     position: fixed;
     left: 0;
@@ -906,7 +909,6 @@ a {
 #s-menu {
     font-size: 2rem;
     cursor: pointer;
-    margin-top:5px;
 }
 
 .active {
@@ -914,4 +916,15 @@ a {
     background-color: #ab9a6f;
     -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+}
+
+.topNav i {
+    display: block;
+    height: 66px;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    line-height: inherit;
 }

@@ -1,5 +1,6 @@
 var products = new Array();
 
+
 function loadDoc() {
     /*
   var xhttp = new XMLHttpRequest();
@@ -231,6 +232,10 @@ function isANumber(str) {
     return !/\D/.test(str);
 }
 
+
+function isTouchDevice() {
+    return 'ontouchstart' in document.documentElement;
+}
 
 
 function getEngine() { //Redirects users using IE or Safari to the chrome download page
