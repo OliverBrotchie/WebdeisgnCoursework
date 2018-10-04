@@ -145,10 +145,10 @@ function openExtender(type) {
 function displayImages(number) {
     
     for (i = 1; i <= 6; i++) {
-        document.getElementById(i).style.display = "none";
+        document.getElementById("i-"+i).style.display = "none";
     }
     for (i = 1; i <= number; i++) {
-        document.getElementById(i).style.display = "inherit";
+        document.getElementById("i-"+i).style.display = "inherit";
     }
     
 }
