@@ -1,14 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
     <head>
 
-        <title>Bïke</title>
+        <title>Bike</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="The online retail store for all your Biking needs!" />
-        <meta name="authors" content="Oliver Brotchie & James Mullen" />
         <meta name="keywords" content="cycle, cycling, bike, biking, bicycle, bikes, bicycles,store, maintenance" />
         <meta name="robots" content="index, follow" />
 
@@ -19,10 +18,7 @@
 
     </head>
     <body onload="getEngine(); activeTab(1); activeTab('xxsmall'); loadDoc();">
-
-
-        <nav>
-            <header>
+ 
                 <div class="topNav row depth-3" id="topNav">
                     <div class="nav-btn" id="s-menu" onclick="openNav('s-sidenav')"><i class="material-icons">menu</i></div>
                     <div class="l-3" id="navLinks">
@@ -32,18 +28,17 @@
                         <a href="#Maintenance" class="nav-btn">Maintenance</a>
 
                     </div>
-                    <div id="title">Bïke</div>
-                    <div class="right input-field" onclick="activateSearch()" ID="searchBar">
+                    <div id="title">Bike</div>
+                    <div class="right input-field" onclick="activateSearch()" id="searchBar">
                         
 
                         <input type="text" />
 
                         <label>
-                            <i class="material-icons" ID="magnify">search</i>
+                            <i class="material-icons" id="magnify">search</i>
                         </label>
                     </div>
-                </div>
-            </header>
+                </div> 
 
             <ul id="s-sidenav" class="sidenav depth-2">
                 <li class="logo-initial">B</li>
@@ -73,44 +68,43 @@
                 <li id="snav-5" onclick="openExtender('5')">BMX Bikes</li>
             </ul>
 
-        </nav>
 
         <div id="navExtended" class="sidenav-extended depth-2">
             <ul class="row container">
                 <li id="1" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <image src="media\bikeimage.jpg" class="img image-product" />
-                    <p id="1-t" class="product-title">Lorem Ipsum</p>
-                    <p id="1-p" class="light">$220</p>
+                    <image src="media/bikeimage.jpg" class="img image-product" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
                 </li>
 
                 <li id="2" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <image src="media\bikeimage.jpg" class="img image-product" />
-                    <p id="2-t" class="product-title">Lorem Ipsum</p>
-                    <p id="2-p" class="light">$220</p>
+                    <image src="media/bikeimage.jpg" class="img image-product" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
                 </li>
 
                 <li id="3" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <image src="media\bikeimage.jpg" class="img image-product" />
-                    <p id="2-t" class="product-title">Lorem Ipsum</p>
-                    <p id="2-p" class="light">$220</p>
+                    <image src="media/bikeimage.jpg" class="img image-product" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
                 </li>
 
                 <li id="4" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <image src="media\bikeimage.jpg" class="img image-product" />
-                    <p id="1-t" class="product-title">Lorem Ipsum</p>
-                    <p id="1-p" class="light">$220</p>
+                    <image src="media/bikeimage.jpg" class="img image-product" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
                 </li>
 
                 <li id="5" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <image src="media\bikeimage.jpg" class="img image-product" />
-                    <p id="2-t" class="product-title">Lorem Ipsum</p>
-                    <p id="2-p" class="light">$220</p>
+                    <image src="media/bikeimage.jpg" class="img image-product" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
                 </li>
 
                 <li id="6" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <image src="media\bikeimage.jpg" class="img image-product" />
-                    <p id="1-t" class="product-title">Lorem Ipsum</p>
-                    <p id="1-p" class="light">$220</p>
+                    <image src="media/bikeimage.jpg" class="img image-product" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
                 </li>
             </ul>
         </div>
@@ -119,11 +113,10 @@
         <div id="searchOverlay" onclick="closeNav()"></div>
         <div id="modalOverlay" onclick="closeModal()"></div>
 
-        <aside>
             <div id="modal" class="l-11 m-11 s-11">
                 <div class="row container">
                     <div class="l-6 m-12 s-12">
-                        <image src="media\bikeimage.jpg" class="img image-product stable-size" style="max-height:350px;" />
+                        <image src="media/bikeimage.jpg" class="img image-product stable-size" style="max-height:350px;" />
                     </div>
                     <div class="l-6 m-12 s-12">
                         <p class="caption-large" id="modalProductName">Lorem Ipsum</p>
@@ -181,13 +174,11 @@
             <div id="modal-footer" class="depth-2 l-11 m-11 s-11">
                 <a class="btn" href="#checkout"><i class="material-icons">label</i></a>
             </div>
-        </aside>
         <main>
             <div id="content">
-                <figure>
+                
                     <div class="parallax" id="parallax1" alt="parallax background image"></div>
-                </figure>
-                <section>
+
                     <div class="section-white">
                         <div class="row container">
                             <div class="s-12 m-6 l-4 promotional">
@@ -220,40 +211,39 @@
                         <div class="row promotional ">
 
                             <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <image src="media\bikeimage.jpg" class="img image-product" />
+                                <image src="media/bikeimage.jpg" class="img image-product" />
                                 <p class="product-title">Lorem Ipsum</p>
                                 <p class="light">$220</p>
                             </div>
                             <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <image src="media\bikeimage.jpg" class="img image-product" />
+                                <image src="media/bikeimage.jpg" class="img image-product" />
                                 <p class="product-title">Lorem Ipsum</p>
                                 <p class="light">$220</p>
                             </div>
                             <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <image src="media\bikeimage.jpg" class="img image-product" />
+                                <image src="media/bikeimage.jpg" class="img image-product" />
                                 <p class="product-title">Lorem Ipsum</p>
                                 <p class="light">$220</p>
                             </div>
                             <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <image src="media\bikeimage.jpg" class="img image-product" />
+                                <image src="media/bikeimage.jpg" class="img image-product" />
                                 <p class="product-title">Lorem Ipsum</p>
                                 <p class="light">$220</p>
                             </div>
                         </div>
                     </div>
-                </section>
-                <figure>
+ 
+             
                     <div class="parallax" id="parallax2" alt="parallax background image">
-                        <figcaption>
+                    
                             <div class="center-element">
                                 <a href="#Sales">
                                     <span class="caption parallax-text">View Sales Now</span>
                                 </a>
                             </div>
-                        </figcaption>
+                      
                     </div>
-                </figure>
-                <section>
+
                     <div class="section-white">
                         <div class="container">
                             <div class="promotional" style="width:100%;margin-bottom:30px;">
@@ -269,23 +259,20 @@
                             </div>
                         </div>
                     </div>
-                </section>
-                <figure>
+         
                     <div class="parallax" id="parallax3" alt="parallax background image">
-                        <figcaption>
+                      
                             <div class="center-element">
                                 <a href="#About">
                                     <span class="caption parallax-text">About Us</span>
                                 </a>
                             </div>
-                        </figcaption>
+                 
                     </div>
-                </figure>
-
-                <footer>
+         
                     <div class="footer"></div>
                     <div class="footer-bot"></div>
-                </footer>
+           
             </div>
         </main>
 
