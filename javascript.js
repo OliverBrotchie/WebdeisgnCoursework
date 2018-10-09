@@ -331,7 +331,7 @@ function isANumber(str) {
     return !/\D/.test(str);
 }
 
-//finds what device type
+//finds the device type
 function isTouchDevice() {
     return 'ontouchstart' in document.documentElement;
 }
