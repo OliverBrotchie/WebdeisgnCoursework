@@ -1,280 +1,280 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-    <head>
+<head>
 
-        <title>Bike</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="author" content="Oliver Brotchie, Seamus Mulan" />
-        <meta name="description" content="The online retail store for all your Biking needs!" />
-        <meta name="keywords" content="cycle, cycling, bike, biking, bicycle, bikes, bicycles,store, maintenance" />
-        <meta name="robots" content="index, follow" />
-		
+    <title>Bike</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Oliver Brotchie, Seamus Mulan" />
+    <meta name="description" content="The online retail store for all your Biking needs!" />
+    <meta name="keywords" content="cycle, cycling, bike, biking, bicycle, bikes, bicycles,store, maintenance" />
+    <meta name="robots" content="index, follow" />
 
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-        <link id="stylesheet" rel="stylesheet" href="stylesheet.css" type="text/css" />
 
-    </head>
-    <body onload="loadDoc();">
- 
-                <div class="topNav row depth-3" id="topNav">
-                    <i id="s-menu" onclick="openNav('s-sidenav')" class="material-icons nav-btn">menu</i>
-                    <div class="l-3" id="navLinks">
-                        <a href="#Bikes" onclick="openNav('sidenav')" class="nav-btn">Bikes</a>
-                        <a href="#Accesories" class="nav-btn">Accessories</a>
-                        <a href="#Training" class="nav-btn">Training</a>
-                        <a href="#Maintenance" class="nav-btn">Maintenance</a>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link id="stylesheet" rel="stylesheet" href="stylesheet.css" type="text/css" />
 
+</head>
+<body onload="loadDoc();">
+
+    <div class="topNav row depth-3" id="topNav">
+        <i id="s-menu" onclick="openNav('s-sidenav')" class="material-icons nav-btn">menu</i>
+        <div class="l-3" id="navLinks">
+            <a href="#Bikes" onclick="openNav('sidenav')" class="nav-btn">Bikes</a>
+            <a href="#Accesories" class="nav-btn">Accessories</a>
+            <a href="#Training" class="nav-btn">Training</a>
+            <a href="#Maintenance" class="nav-btn">Maintenance</a>
+
+        </div>
+        <div id="title">Bike</div>
+
+        <div class="right input-field" onclick="activateSearch()" id="searchBar">
+            <input type="text" id="searchBox" />
+            <label>
+                <i class="material-icons" id="magnify">search</i>
+            </label>
+        </div>
+    </div>
+
+    <ul id="s-sidenav" class="sidenav depth-2">
+        <li class="logo-initial">B</li>
+
+        <li><a href="#Bikes" class="noStyle">Bikes</a></li>
+
+        <li><a href="#Accesories" class="noStyle">Accesories</a></li>
+
+        <li><a href="#Training" class="noStyle">Training</a></li>
+
+        <li><a href="#Maintenance" class="noStyle">Maintenance</a></li>
+
+
+    </ul>
+
+    <ul id="sidenav" class="sidenav depth-2">
+        <li class="logo-initial">B</li>
+
+        <li id="snav-1" onclick="openExtender('1')">City Bikes</li>
+
+        <li id="snav-2" onclick="openExtender('2')">Touring Bikes</li>
+
+        <li id="snav-3" onclick="openExtender('3')">Hybrid Bikes</li>
+
+        <li id="snav-4" onclick="openExtender('4')">Mountain Bikes</li>
+
+        <li id="snav-5" onclick="openExtender('5')">BMX Bikes</li>
+    </ul>
+
+
+    <div id="navExtended" class="sidenav-extended depth-2">
+        <ul class="row container">
+            <li id="i-1" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+
+            <li id="i-2" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+
+            <li id="i-3" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+
+            <li id="i-4" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+
+            <li id="i-5" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+
+            <li id="i-6" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+        </ul>
+    </div>
+
+    <div id="sideNavOverlay" onclick="closeNav()"></div>
+    <div id="searchOverlay" onclick="closeNav()"></div>
+    <div id="modalOverlay" onclick="closeModal()"></div>
+
+    <div id="modal" class="l-11 m-11 s-11">
+        <div class="row container">
+            <div class="l-6 m-12 s-12">
+                <img src="media/bikeimage.jpg" class="img image-product stable-size" style="max-height:350px;" alt="image of bike" />
+            </div>
+            <div class="l-6 m-12 s-12">
+                <p class="caption-large" id="modalProductName">Lorem Ipsum</p>
+                <p class="light">$220</p>
+
+                <div class="row">
+                    <ul class="tabs">
+                        <li id="xxsmall" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xxsmall')">
+                            <a class="tab-link">xx-small</a>
+                        </li>
+                        <li id="xsmall" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xsmall')">
+                            <a class="tab-link">x-small</a>
+                        </li>
+                        <li id="small" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('small')">
+                            <a class="tab-link">small</a>
+                        </li>
+
+                        <li id="medium" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('medium')">
+                            <a class="tab-link">medium</a>
+                        </li>
+                        <li id="large" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('large')">
+                            <a class="tab-link">large</a>
+                        </li>
+                        <li id="xlarge" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xlarge')">
+                            <a class="tab-link">x-large</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row container">
+            <div class=" container s-12 m-12 l-12">
+                <ul class="tabs" style="width:100%">
+                    <li id="tab-1" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(1)">
+                        <a class="tab-link">details</a>
+                    </li>
+                    <li id="tab-2" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(2)">
+                        <a class="tab-link">specs</a>
+                    </li>
+                    <li id="tab-3" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(3)">
+                        <a class="tab-link">warranty</a>
+                    </li>
+                    <li id="tab-4" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(4)">
+                        <a class="tab-link">sizing</a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="row container">
+            <p id="tab-text" class="light s-10 m-10 l-10">This bike is verry nice</p>
+        </div>
+    </div>
+
+    <div id="modal-footer" class="depth-2 l-11 m-11 s-11">
+        <a class="btn" href="#checkout"><i class="material-icons">label</i></a>
+    </div>
+
+    <div id="content">
+
+        <div class="parallax" id="parallax1"></div>
+
+        <div class="section-white">
+            <div class="row container">
+                <div class="s-12 m-6 l-4 promotional">
+                    <div class="promo">
+                        <i class="material-icons">work</i>
+                        <p class="caption">Cycle To Work Schemes</p>
+                        <p class="light">Evans Cycles Ride-to-Work is a leading provider of the Cycle to Work scheme with excellent tax savings on a wide range of bikes and equipment.</p>
                     </div>
-                    <div id="title">Bike</div>
-					
-                    <div class="right input-field" onclick="activateSearch()" id="searchBar">
-                        <input type="text" id="searchBox"/>
-                        <label>
-                            <i class="material-icons" id="magnify">search</i>
-                        </label>
+                </div>
+                <div class="s-12 m-6 l-4 promotional">
+                    <div class="promo">
+                        <i class="material-icons">touch_app</i>
+                        <p class="caption">Free Click And Collect</p>
+                        <p class="light">With over 60 stores across the UK, finding the nearest store to you is only one click away.</p>
                     </div>
-                </div> 
-
-            <ul id="s-sidenav" class="sidenav depth-2">
-                <li class="logo-initial">B</li>
-
-                <li><a href="#Bikes" class="noStyle">Bikes</a></li>
-
-                <li><a href="#Accesories" class="noStyle">Accesories</a></li>
-
-                <li><a href="#Training" class="noStyle">Training</a></li>
-
-                <li><a href="#Maintenance" class="noStyle">Maintenance</a></li>
+                </div>
+                <div class="s-12 m-12 l-4 promotional">
+                    <div class="promo">
+                        <i class="material-icons">credit_card</i>
+                        <p class="caption">0% Finance Available</p>
+                        <p class="light">If you are spending over $499, you can choose between 0% finance over 12 months or low cost finance (9.9% APR) over up to 4 years.</p>
+                    </div>
+                </div>
+            </div>
 
 
-            </ul>
-
-            <ul id="sidenav" class="sidenav depth-2">
-                <li class="logo-initial">B</li>
-
-                <li id="snav-1" onclick="openExtender('1')">City Bikes</li>
-
-                <li id="snav-2" onclick="openExtender('2')">Touring Bikes</li>
-
-                <li id="snav-3" onclick="openExtender('3')">Hybrid Bikes</li>
-
-                <li id="snav-4" onclick="openExtender('4')">Mountain Bikes</li>
-
-                <li id="snav-5" onclick="openExtender('5')">BMX Bikes</li>
-            </ul>
+            <p class="caption-large" style="padding-top: 5rem;padding-bottom: 2rem;">Top Sellers</p>
 
 
-        <div id="navExtended" class="sidenav-extended depth-2">
-            <ul class="row container">
-                <li id="i-1" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+            <div class="row promotional ">
+
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
-                </li>
-
-                <li id="i-2" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                </div>
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
-                </li>
-
-                <li id="i-3" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                </div>
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
-                </li>
-
-                <li id="i-4" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+                </div>
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
-                </li>
-
-                <li id="i-5" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </li>
-
-                <li id="i-6" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
 
-        <div id="sideNavOverlay" onclick="closeNav()"></div>
-        <div id="searchOverlay" onclick="closeNav()"></div>
-        <div id="modalOverlay" onclick="closeModal()"></div>
 
-            <div id="modal" class="l-11 m-11 s-11">
-                <div class="row container">
-                    <div class="l-6 m-12 s-12">
-                        <img src="media/bikeimage.jpg" class="img image-product stable-size" style="max-height:350px;" alt="image of bike"/>
-                    </div>
-                    <div class="l-6 m-12 s-12">
-                        <p class="caption-large" id="modalProductName">Lorem Ipsum</p>
-                        <p class="light">$220</p>
+        <div class="parallax" id="parallax2">
 
-                        <div class="row">
-                            <ul class="tabs">
-                                <li id="xxsmall" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xxsmall')">
-                                    <a class="tab-link">xx-small</a>
-                                </li>
-                                <li id="xsmall" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xsmall')">
-                                    <a class="tab-link">x-small</a>
-                                </li>
-                                <li id="small" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('small')">
-                                    <a class="tab-link">small</a>
-                                </li>
-
-                                <li id="medium" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('medium')">
-                                    <a class="tab-link">medium</a>
-                                </li>
-                                <li id="large" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('large')">
-                                    <a class="tab-link">large</a>
-                                </li>
-                                <li id="xlarge" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xlarge')">
-                                    <a class="tab-link">x-large</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row container">
-                    <div class=" container s-12 m-12 l-12">
-                        <ul class="tabs" style="width:100%">
-                            <li id="tab-1" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(1)">
-                                <a class="tab-link">details</a>
-                            </li>
-                            <li id="tab-2" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(2)">
-                                <a class="tab-link">specs</a>
-                            </li>
-                            <li id="tab-3" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(3)">
-                                <a class="tab-link">warranty</a>
-                            </li>
-                            <li id="tab-4" class="tab depth-0 s-6 m-6 l-3 " onclick="activeTab(4)">
-                                <a class="tab-link">sizing</a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
-                <div class="row container">
-                    <p id="tab-text" class="light s-10 m-10 l-10">This bike is verry nice</p>
-                </div>
+            <div class="center-element">
+                <a href="#Sales">
+                    <span class="caption parallax-text">View Sales Now</span>
+                </a>
             </div>
 
-            <div id="modal-footer" class="depth-2 l-11 m-11 s-11">
-                <a class="btn" href="#checkout"><i class="material-icons">label</i></a>
+        </div>
+
+        <div class="section-white">
+            <div class="container">
+                <div class="promotional" style="width:100%;margin-bottom:30px;">
+                    <p class="caption">Cycle To Work Schemes</p>
+                    <p class="light">
+                        Enjoy flying up hills? Start with our range of road bikes.
+                        Or if it's all about tracks and trails, head to our mountain bikes for a mix of hardtail and full suspension machines. <br />
+                        We've even got a full range of hybrid bikes, which includes several folding bikes - ideal if you're taking the train or you're short on storage space.<br /><br />
+                        Still not sure which bike is for you? Pop into one of our UK bike stores where our friendly staff will help, or use our super handy right bike finder tool.
+                        We also stock all the clothing and accessories you'll ever need, as well as a wide range of parts and components to keep your bike in tip-top condition. <br />
+                        Enjoy the Ride!
+                    </p>
+                </div>
             </div>
-       
-            <div id="content">
-                
-                    <div class="parallax" id="parallax1"></div>
+        </div>
 
-                    <div class="section-white">
-                        <div class="row container">
-                            <div class="s-12 m-6 l-4 promotional">
-                                <div class="promo">
-                                    <i class="material-icons">work</i>
-                                    <p class="caption">Cycle To Work Schemes</p>
-                                    <p class="light">Evans Cycles Ride-to-Work is a leading provider of the Cycle to Work scheme with excellent tax savings on a wide range of bikes and equipment.</p>
-                                </div>
-                            </div>
-                            <div class="s-12 m-6 l-4 promotional">
-                                <div class="promo">
-                                    <i class="material-icons">touch_app</i>
-                                    <p class="caption">Free Click And Collect</p>
-                                    <p class="light">With over 60 stores across the UK, finding the nearest store to you is only one click away.</p>
-                                </div>
-                            </div>
-                            <div class="s-12 m-12 l-4 promotional">
-                                <div class="promo">
-                                    <i class="material-icons">credit_card</i>
-                                    <p class="caption">0% Finance Available</p>
-                                    <p class="light">If you are spending over $499, you can choose between 0% finance over 12 months or low cost finance (9.9% APR) over up to 4 years.</p>
-                                </div>
-                            </div>
-                        </div>
+        <div class="parallax" id="parallax3">
 
-
-                        <p class="caption-large" style="padding-top: 5rem;padding-bottom: 2rem;">Top Sellers</p>
-
-
-                        <div class="row promotional ">
-
-                            <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                                <p class="product-title">Lorem Ipsum</p>
-                                <p class="light">$220</p>
-                            </div>
-                            <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                                <p class="product-title">Lorem Ipsum</p>
-                                <p class="light">$220</p>
-                            </div>
-                            <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                                <p class="product-title">Lorem Ipsum</p>
-                                <p class="light">$220</p>
-                            </div>
-                            <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
-                                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                                <p class="product-title">Lorem Ipsum</p>
-                                <p class="light">$220</p>
-                            </div>
-                        </div>
-                    </div>
- 
-             
-                    <div class="parallax" id="parallax2">
-                    
-                            <div class="center-element">
-                                <a href="#Sales">
-                                    <span class="caption parallax-text">View Sales Now</span>
-                                </a>
-                            </div>
-                      
-                    </div>
-
-                    <div class="section-white">
-                        <div class="container">
-                            <div class="promotional" style="width:100%;margin-bottom:30px;">
-                                <p class="caption">Cycle To Work Schemes</p>
-                                <p class="light">
-                                    Enjoy flying up hills? Start with our range of road bikes.
-                                    Or if it's all about tracks and trails, head to our mountain bikes for a mix of hardtail and full suspension machines. <br />
-                                    We've even got a full range of hybrid bikes, which includes several folding bikes - ideal if you're taking the train or you're short on storage space.<br /><br />
-                                    Still not sure which bike is for you? Pop into one of our UK bike stores where our friendly staff will help, or use our super handy right bike finder tool.
-                                    We also stock all the clothing and accessories you'll ever need, as well as a wide range of parts and components to keep your bike in tip-top condition. <br />
-                                    Enjoy the Ride!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-         
-                    <div class="parallax" id="parallax3">
-                      
-                            <div class="center-element">
-                                <a href="#About">
-                                    <span class="caption parallax-text">About Us</span>
-                                </a>
-                            </div>
-                 
-                    </div>
-         
-                    <div class="footer"></div>
-                    <div class="footer-bot"></div>
-           
+            <div class="center-element">
+                <a href="#About">
+                    <span class="caption parallax-text">About Us</span>
+                </a>
             </div>
-        
 
-        <script type="text/javascript" src="javascript.js"></script>
-    </body>
+        </div>
+
+        <div class="footer"></div>
+        <div class="footer-bot"></div>
+
+    </div>
+
+
+    <script type="text/javascript" src="javascript.js"></script>
+</body>
 </html>

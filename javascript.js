@@ -2,9 +2,9 @@ var products = new Array();
 
 
 function loadDoc() {
-	getEngine(); 
-	activeTab(1); 
-	activeTab('xxsmall'); 
+    getEngine();
+    activeTab(1);
+    activeTab('xxsmall');
     circularize();
 
     /*
@@ -38,23 +38,23 @@ function displayProducts(){
 	}
 }*/
 
-function circularize(){
-	var x = document.getElementsByClassName("circle");
-	
-	for(i=0;i<x.length;i++){
-		x[i].style.width = x[i].offsetHeight + "px";
-		x[i].style.lineHeight = x[i].offsetHeight + "px";
-	}
+function circularize() {
+    var x = document.getElementsByClassName("circle");
+
+    for (i = 0; i < x.length; i++) {
+        x[i].style.width = x[i].offsetHeight + "px";
+        x[i].style.lineHeight = x[i].offsetHeight + "px";
+    }
 }
 function activeTab(tab) {
-	if(isANumber(tab)==true){
-		
-		for(i=1;i<5;i++){	
-			document.getElementById("tab-" + i).classList.remove('active');
-		}
-	}
+    if (isANumber(tab) == true) {
+
+        for (i = 1; i < 5; i++) {
+            document.getElementById("tab-" + i).classList.remove('active');
+        }
+    }
     switch (tab) {
-			
+
         case 1:
             document.getElementById("tab-1").classList.add('active');
             document.getElementById("tab-text").innerHTML = "This is a description about a bike"
@@ -71,7 +71,7 @@ function activeTab(tab) {
             document.getElementById("tab-4").classList.add('active');
             document.getElementById("tab-text").innerHTML = "The best way to find out what size of frame you should get is to come in store and try the bike out yourself!"
             break;
-			
+
         case "xxsmall":
             document.getElementById("xxsmall").classList.add('active');
             document.getElementById("xsmall").classList.remove('active');
@@ -127,47 +127,47 @@ function activeTab(tab) {
 
 function openNav() {
     openOverlay("sideNavOverlay");
-    translateElement("sidenav", 0,"x");
+    translateElement("sidenav", 0, "x");
 }
 
 function openNav(nav) {
-    translateElement(nav, 0,"x");
+    translateElement(nav, 0, "x");
     openOverlay("sideNavOverlay");
 }
 
 function openModal(productID) {
     document.getElementById("modal").style.display = "block";
-	document.getElementById("modal-footer").style.display = "block";
+    document.getElementById("modal-footer").style.display = "block";
     openOverlay("modalOverlay");
 }
 
 
 function openExtender(type) {
-    translateElement("navExtended", 0,"x");
-	
-	for(i=1;i<6;i++){	
-		document.getElementById("snav-" + i).classList.remove('active');
-	}
-	
+    translateElement("navExtended", 0, "x");
+
+    for (i = 1; i < 6; i++) {
+        document.getElementById("snav-" + i).classList.remove('active');
+    }
+
     document.getElementById("snav-" + type).classList.add('active');
 
-	displayImages(6);
+    displayImages(6);
 }
 
 function displayImages(number) {
-    
+
     for (i = 1; i <= 6; i++) {
-        document.getElementById("i-"+i).style.display = "none";
+        document.getElementById("i-" + i).style.display = "none";
     }
     for (i = 1; i <= number; i++) {
-        document.getElementById("i-"+i).style.display = "inherit";
+        document.getElementById("i-" + i).style.display = "inherit";
     }
-    
+
 }
 
 function closeModal() {
     document.getElementById("modal").style.display = "none";
-	document.getElementById("modal-footer").style.display = "none";
+    document.getElementById("modal-footer").style.display = "none";
     activeTab(1);
     activeTab('xxsmall')
 
@@ -182,8 +182,8 @@ function closeOverlay(overlayID) {
         document.getElementById(overlayID).style.display = "none";
         document.getElementById(overlayID).classList.remove('fadeOut');
 
-    }, 500);  
-    
+    }, 500);
+
 }
 
 function openOverlay(overlayID) {
@@ -194,27 +194,27 @@ function openOverlay(overlayID) {
     setTimeout(function () {
         document.getElementById(overlayID).classList.remove('fadeIn');
 
-    }, 500);  
+    }, 500);
 }
 
 
 function closeNav() {
-    translateElement("sidenav", -105,"x");
-    translateElement("s-sidenav", -105,"x");
-    translateElement("navExtended", -155,"x");
+    translateElement("sidenav", -105, "x");
+    translateElement("s-sidenav", -105, "x");
+    translateElement("navExtended", -155, "x");
     document.getElementById('navExtended').style.display = "none";
 
     setTimeout(function () {
         document.getElementById('navExtended').style.display = "block";
-    }, 500);  
+    }, 500);
 
     closeSearch();
-    
-    displayImages(0);
-    
 
-	for(i=1;i<6;i++){	
-		document.getElementById("snav-" + i).classList.remove('active');
+    displayImages(0);
+
+
+    for (i = 1; i < 6; i++) {
+        document.getElementById("snav-" + i).classList.remove('active');
     }
 
     closeOverlay("sideNavOverlay");
@@ -236,93 +236,93 @@ function activateSearch() {
     document.getElementById("searchBar").style.color = "rgba(0,0,0,0.87)";
     document.getElementById("magnify").style.color = "rgba(0,0,0,0.87)"
     document.getElementById("searchOverlay").style.display = "block";
-	setFocus("searchBox");
+    setFocus("searchBox");
 }
 
 
-function translateElement(id,end,axis) {
-	if (axis == "x"){
-		document.getElementById(id).style.transform = "translateX(" + end + "%)";
-	} else {
-		document.getElementById(id).style.transform = "translateY(" + end + "%)";
-	}
-    
+function translateElement(id, end, axis) {
+    if (axis == "x") {
+        document.getElementById(id).style.transform = "translateX(" + end + "%)";
+    } else {
+        document.getElementById(id).style.transform = "translateY(" + end + "%)";
+    }
+
 }
 
 var nav = document.getElementById("topNav");
 var navBottom = findBot("topNav");
-var prevOffset=0;
+var prevOffset = 0;
 var scrolled = false;
 var initialScroll = false;
 
-window.onscroll = function () { scrollNav(true, false, false)};
+window.onscroll = function () { scrollNav(true, false, false) };
 
 
-function findBot(id){
-	return document.getElementById(id).offsetTop + document.getElementById(id).offsetHeight;
+function findBot(id) {
+    return document.getElementById(id).offsetTop + document.getElementById(id).offsetHeight;
 }
 
 
-function scrollNav(mobile,tablet,desktop){
-	
-    if (mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false){
-		
-		if(window.pageYOffset>prevOffset ){
-			
-			if(!scrolled){
-				
-				if(window.pageYOffset > navBottom){
-					if(!initialScroll) {
-						translateElement("topNav",-105,"y");
-						scrolled=true;
-						initialScroll = true;
-					} else {
-						prevOffset = window.pageYOffset
+function scrollNav(mobile, tablet, desktop) {
 
-						setTimeout(function () {
-							if(window.pageYOffset > prevOffset){
-								translateElement("topNav",-105,"y");
-								scrolled=true;
-							}	
-						}, 250);
-					}
-				}
-				
-				
-			}
-			
-			
-			
-		} else if(window.pageYOffset<prevOffset){
-			
-			if(scrolled){
-				
-				if(window.pageYOffset <= navBottom){
-						translateElement("topNav",0,"y");
-						scrolled=false;
-						initialScroll=false;
-				}	
+    if (mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false) {
 
-				
-				prevOffset = window.pageYOffset
-				
-				setTimeout(function () {
-					if(window.pageYOffset < prevOffset){
-						translateElement("topNav",0,"y");
-						scrolled=false;
-					}	
-				}, 350);  
-				
-				
-			}
-			
-		} else {}
-		
-		
-		prevOffset = window.pageYOffset;
-		
-		
-	}
+        if (window.pageYOffset > prevOffset) {
+
+            if (!scrolled) {
+
+                if (window.pageYOffset > navBottom) {
+                    if (!initialScroll) {
+                        translateElement("topNav", -105, "y");
+                        scrolled = true;
+                        initialScroll = true;
+                    } else {
+                        prevOffset = window.pageYOffset
+
+                        setTimeout(function () {
+                            if (window.pageYOffset > prevOffset) {
+                                translateElement("topNav", -105, "y");
+                                scrolled = true;
+                            }
+                        }, 250);
+                    }
+                }
+
+
+            }
+
+
+
+        } else if (window.pageYOffset < prevOffset) {
+
+            if (scrolled) {
+
+                if (window.pageYOffset <= navBottom) {
+                    translateElement("topNav", 0, "y");
+                    scrolled = false;
+                    initialScroll = false;
+                }
+
+
+                prevOffset = window.pageYOffset
+
+                setTimeout(function () {
+                    if (window.pageYOffset < prevOffset) {
+                        translateElement("topNav", 0, "y");
+                        scrolled = false;
+                    }
+                }, 350);
+
+
+            }
+
+        } else { }
+
+
+        prevOffset = window.pageYOffset;
+
+
+    }
 }
 
 
@@ -340,7 +340,7 @@ function isTouchDevice(type) {
     if ('ontouchstart' in document.documentElement) {
         if (screen.width < 420 && type == "mobile") {
             return true;
-        } else if (screen.width >= 420 && type == "tablet"){
+        } else if (screen.width >= 420 && type == "tablet") {
             return true;
         }
     }
