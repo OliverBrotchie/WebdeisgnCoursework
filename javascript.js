@@ -5,7 +5,8 @@ function loadDoc() {
 	getEngine(); 
 	activeTab(1); 
 	activeTab('xxsmall'); 
-	circularize();
+    circularize();
+
     /*
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -254,7 +255,7 @@ var prevOffset=0;
 var scrolled = false;
 var initialScroll = false;
 
-window.onscroll = function() {scrollNav()};
+window.onscroll = function () { scrollNav(true, false, false)};
 
 
 function findBot(id){
@@ -262,9 +263,9 @@ function findBot(id){
 }
 
 
-function scrollNav(){
+function scrollNav(mobile,tablet,desktop){
 	
-	if(isTouchDevice()){
+    if (mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false){
 		
 		if(window.pageYOffset>prevOffset ){
 			
@@ -326,8 +327,6 @@ function scrollNav(){
 
 
 
-
-
 function isANumber(str) {
     return !/\D/.test(str);
 }
@@ -335,6 +334,17 @@ function isANumber(str) {
 
 function isTouchDevice() {
     return 'ontouchstart' in document.documentElement;
+}
+
+function isTouchDevice(type) {
+    if ('ontouchstart' in document.documentElement) {
+        if (screen.width < 420 && type == "mobile") {
+            return true;
+        } else if (screen.width >= 420 && type == "tablet"){
+            return true;
+        }
+    }
+    return false;
 }
 
 
