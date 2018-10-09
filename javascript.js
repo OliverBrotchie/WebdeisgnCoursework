@@ -1,6 +1,6 @@
 var products = new Array();
 
-
+//called on loading the page
 function loadDoc() {
     getEngine();
     activeTab(1);
@@ -12,37 +12,11 @@ function loadDoc() {
         window.open("https://www.google.com/chrome/", "_self");
     }
 
-    /*
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      showProducts(this.responseText);
-    }
-  };
-  xhttp.open("GET", "productlist.text", true);
-  xhttp.send();
-    */
-}
-
-/*
-function showProducts(text) {
-	var result = text.split(";");
-	for(i=0;i<=result.length-1;i++){
-		var temp= result[i];
-		temp= temp.split(",");
-		products.push([temp[0], temp[1],temp[2],temp[3]]);	
-	}
-	
-	displayProducts();
 
 }
 
-function displayProducts(){
-	/*for(i=1;i<3;i++){
-		document.getElementById(i + "-i").src = products[i-1][1];
-	}
-}*/
 
+//circularises elements with the class "circle"
 function circularize() {
     var x = document.getElementsByClassName("circle");
 
@@ -51,6 +25,8 @@ function circularize() {
         x[i].style.lineHeight = x[i].offsetHeight + "px";
     }
 }
+
+//spaghetti code for activating modal tabs (needs updating)
 function activeTab(tab) {
     if (isANumber(tab) == true) {
 
@@ -130,23 +106,24 @@ function activeTab(tab) {
     }
 }
 
+//handles opening the side nav for mobile and desktop
+var navOpen = false;
+
 function openNav() {
     openOverlay("sideNavOverlay");
     translateElement("sidenav", 0, "x");
+    navOpen = true;
 }
 
 function openNav(nav) {
     translateElement(nav, 0, "x");
     openOverlay("sideNavOverlay");
-}
-
-function openModal(productID) {
-    document.getElementById("modal").style.display = "block";
-    document.getElementById("modal-footer").style.display = "block";
-    openOverlay("modalOverlay");
+    navOpen = true;
 }
 
 
+
+//opens the side nav extension
 function openExtender(type) {
     translateElement("navExtended", 0, "x");
 
@@ -159,6 +136,7 @@ function openExtender(type) {
     displayImages(6);
 }
 
+//used for displaying products in the sidenav
 function displayImages(number) {
 
     for (i = 1; i <= 6; i++) {
@@ -169,7 +147,7 @@ function displayImages(number) {
     }
 
 }
-
+//handles opening and closing of the modal
 function closeModal() {
     document.getElementById("modal").style.display = "none";
     document.getElementById("modal-footer").style.display = "none";
@@ -180,6 +158,14 @@ function closeModal() {
 
 }
 
+
+function openModal(productID) {
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("modal-footer").style.display = "block";
+    openOverlay("modalOverlay");
+}
+
+// handles opening and closing of any overlays
 function closeOverlay(overlayID) {
     document.getElementById(overlayID).classList.add('fadeOut');
 
@@ -202,8 +188,9 @@ function openOverlay(overlayID) {
     }, 500);
 }
 
-
+//closes any open side navs
 function closeNav() {
+    navOpen = false;
     translateElement("sidenav", -105, "x");
     translateElement("s-sidenav", -105, "x");
     translateElement("navExtended", -155, "x");
@@ -225,10 +212,12 @@ function closeNav() {
     closeOverlay("sideNavOverlay");
 }
 
+//sets the focus on a spesified element
 function setFocus(id) {
     document.getElementById(id).focus();
 }
 
+//handles the look of the search bar on click
 function closeSearch() {
     document.getElementById('searchOverlay').style.display = "none";
     document.getElementById("searchBar").style.backgroundColor = "rgba(0,0,0,0)";
@@ -244,7 +233,7 @@ function activateSearch() {
     setFocus("searchBox");
 }
 
-
+//moves elements about the screen
 function translateElement(id, end, axis) {
     if (axis == "x") {
         document.getElementById(id).style.transform = "translateX(" + end + "%)";
@@ -253,6 +242,8 @@ function translateElement(id, end, axis) {
     }
 
 }
+
+//This section of code minimises the top nav bar on mobile devices to maximise on the small screen space
 
 var nav = document.getElementById("topNav");
 var navBottom = findBot("topNav");
@@ -270,8 +261,8 @@ function findBot(id) {
 
 function scrollNav(mobile, tablet, desktop) {
 
-    if (mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false) {
-
+    if ((mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false) && navOpen == false) {
+        // handles scrolling down
         if (window.pageYOffset > prevOffset) {
 
             if (!scrolled) {
@@ -284,6 +275,7 @@ function scrollNav(mobile, tablet, desktop) {
                     } else {
                         prevOffset = window.pageYOffset
 
+                        //creates a buffer so that the nav does not scroll instantly
                         setTimeout(function () {
                             if (window.pageYOffset > prevOffset) {
                                 translateElement("topNav", -105, "y");
@@ -297,7 +289,7 @@ function scrollNav(mobile, tablet, desktop) {
             }
 
 
-
+            // handles scrolling up
         } else if (window.pageYOffset < prevOffset) {
 
             if (scrolled) {
@@ -311,6 +303,7 @@ function scrollNav(mobile, tablet, desktop) {
 
                 prevOffset = window.pageYOffset
 
+                //creates a buffer so that the nav does not scroll instantly
                 setTimeout(function () {
                     if (window.pageYOffset < prevOffset) {
                         translateElement("topNav", 0, "y");
@@ -331,12 +324,12 @@ function scrollNav(mobile, tablet, desktop) {
 }
 
 
-
+//tests is a string is a number
 function isANumber(str) {
     return !/\D/.test(str);
 }
 
-
+//finds what device type
 function isTouchDevice() {
     return 'ontouchstart' in document.documentElement;
 }
@@ -352,7 +345,7 @@ function isTouchDevice(type) {
     return false;
 }
 
-
+//fids the browser type
 function getEngine() {
     var browser = "Unknown";
 
@@ -370,3 +363,37 @@ function getEngine() {
 
     return browser;
 }
+
+
+/*
+function retiveProducts() {
+    var xhttp = new XMLHttpRequest();
+    var text;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            text = this.responseText;
+
+            var result = text.split(";");
+
+            for (i = 0; i <= result.length - 1; i++) {
+                var temp = result[i];
+                temp = temp.split(",");
+                products.push([temp[0], temp[1], temp[2], temp[3]]);
+            }
+
+            displayProducts();
+        }
+    };
+    xhttp.open("GET", "productlist.text", true);
+    xhttp.send();
+
+
+
+}
+*/
+/*
+function displayProducts(){
+	for(i=1;i<3;i++){
+		document.getElementById(i + "-i").src = products[i-1][1];
+	}
+}*/
