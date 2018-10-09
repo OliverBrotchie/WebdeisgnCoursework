@@ -26,7 +26,7 @@ function circularize() {
     }
 }
 
-//spaghetti code for activating modal tabs (needs updating)
+//spaghetti code for activating modal tabs (needs updating but works for now)
 function activeTab(tab) {
     if (isANumber(tab) == true) {
 
