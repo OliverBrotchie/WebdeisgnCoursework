@@ -7,6 +7,11 @@ function loadDoc() {
     activeTab('xxsmall');
     circularize();
 
+    //redirects user to a better browser
+    if (getEngine() == "IE" || getEngine() == "Safari" || getEngine() == "Unknown") {
+        window.open("https://www.google.com/chrome/", "_self");
+    }
+
     /*
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -348,12 +353,20 @@ function isTouchDevice(type) {
 }
 
 
-function getEngine() { //Redirects users using IE or Safari to the chrome download page
-    var isIE = /*@cc_on!@*/false || !!document.documentMode;
-    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
-    var isFirefox = typeof InstallTrigger !== 'undefined';
+function getEngine() {
+    var browser = "Unknown";
 
-    if (isIE == true || isSafari == true) {
-        window.open("https://www.google.com/chrome/", "_self");
+    if (/*@cc_on!@*/false || !!document.documentMode) {
+        browser = "IE"
+    } else if (!(/*@cc_on!@*/false || !!document.documentMode) && !!window.StyleMedia) {
+        browser = "Edge"
+    } else if (/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification)) {
+        browser = "Safari"
+    } else if (typeof InstallTrigger !== 'undefined') {
+        browser = "Firefox"
+    } else if (!!window.chrome && !!window.chrome.webstore) {
+        browser = "Chrome"
     }
+
+    return browser;
 }
