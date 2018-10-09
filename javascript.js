@@ -107,7 +107,7 @@ function activeTab(tab) {
 }
 
 //handles opening the side nav for mobile and desktop
-var navOpen = false;
+
 
 function openNav() {
     openOverlay("sideNavOverlay");
@@ -244,12 +244,14 @@ function translateElement(id, end, axis) {
 }
 
 //This section of code minimises the top nav bar on mobile devices to maximise on the small screen space
+// Whilst Global variables are messy, they are nessisary for this functionality
 
 var nav = document.getElementById("topNav");
 var navBottom = findBot("topNav");
 var prevOffset = 0;
 var scrolled = false;
 var initialScroll = false;
+var navOpen = false;
 
 window.onscroll = function () { scrollNav(true, false, false) };
 
