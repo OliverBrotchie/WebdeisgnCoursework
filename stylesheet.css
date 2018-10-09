@@ -493,8 +493,23 @@ li {
         height: 66px;
         z-index: 500;
         line-height: 66px;
+		will-change: transform;
+		transition: 0.3s;
     }
 
+	.circle{
+		border-radius: 50%;
+		font-size:24px !important;
+		display: block;
+		height: 66px;
+		float: left;
+		text-align: center;
+		text-decoration: none;
+		color: #fff;
+		font-weight: 500;
+		line-height: 66px;
+	}
+	
 .nav-btn {
     height:66px;
     float: left;
@@ -907,7 +922,7 @@ a {
         }
 
 #s-menu {
-    font-size: 2rem;
+    font-size: 24px;
     cursor: pointer;
 }
 

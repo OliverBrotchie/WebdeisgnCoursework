@@ -18,10 +18,10 @@
         <link id="stylesheet" rel="stylesheet" href="stylesheet.css" type="text/css" />
 
     </head>
-    <body onload="getEngine(); activeTab(1); activeTab('xxsmall'); loadDoc();">
+    <body onload="loadDoc();">
  
                 <div class="topNav row depth-3" id="topNav">
-                    <div class="nav-btn" id="s-menu" onclick="openNav('s-sidenav')"><i class="material-icons">menu</i></div>
+                    <i id="s-menu" onclick="openNav('s-sidenav')" class="material-icons nav-btn">menu</i>
                     <div class="l-3" id="navLinks">
                         <a href="#Bikes" onclick="openNav('sidenav')" class="nav-btn">Bikes</a>
                         <a href="#Accesories" class="nav-btn">Accessories</a>
@@ -30,11 +30,9 @@
 
                     </div>
                     <div id="title">Bike</div>
+					
                     <div class="right input-field" onclick="activateSearch()" id="searchBar">
-                        
-
-                        <input type="text" />
-
+                        <input type="text" id="searchBox"/>
                         <label>
                             <i class="material-icons" id="magnify">search</i>
                         </label>

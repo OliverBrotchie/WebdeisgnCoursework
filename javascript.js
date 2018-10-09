@@ -2,6 +2,10 @@ var products = new Array();
 
 
 function loadDoc() {
+	getEngine(); 
+	activeTab(1); 
+	activeTab('xxsmall'); 
+	circularize();
     /*
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -33,7 +37,14 @@ function displayProducts(){
 	}
 }*/
 
-
+function circularize(){
+	var x = document.getElementsByClassName("circle");
+	
+	for(i=0;i<x.length;i++){
+		x[i].style.width = x[i].offsetHeight + "px";
+		x[i].style.lineHeight = x[i].offsetHeight + "px";
+	}
+}
 function activeTab(tab) {
 	if(isANumber(tab)==true){
 		
@@ -115,11 +126,11 @@ function activeTab(tab) {
 
 function openNav() {
     openOverlay("sideNavOverlay");
-    translateElement("sidenav", 0);
+    translateElement("sidenav", 0,"x");
 }
 
 function openNav(nav) {
-    translateElement(nav, 0);
+    translateElement(nav, 0,"x");
     openOverlay("sideNavOverlay");
 }
 
@@ -131,7 +142,7 @@ function openModal(productID) {
 
 
 function openExtender(type) {
-    translateElement("navExtended", 0);
+    translateElement("navExtended", 0,"x");
 	
 	for(i=1;i<6;i++){	
 		document.getElementById("snav-" + i).classList.remove('active');
@@ -187,9 +198,9 @@ function openOverlay(overlayID) {
 
 
 function closeNav() {
-    translateElement("sidenav", -105);
-    translateElement("s-sidenav", -105);
-    translateElement("navExtended", -155);
+    translateElement("sidenav", -105,"x");
+    translateElement("s-sidenav", -105,"x");
+    translateElement("navExtended", -155,"x");
     document.getElementById('navExtended').style.display = "none";
 
     setTimeout(function () {
@@ -208,6 +219,10 @@ function closeNav() {
     closeOverlay("sideNavOverlay");
 }
 
+function setFocus(id) {
+    document.getElementById(id).focus();
+}
+
 function closeSearch() {
     document.getElementById('searchOverlay').style.display = "none";
     document.getElementById("searchBar").style.backgroundColor = "rgba(0,0,0,0)";
@@ -220,12 +235,97 @@ function activateSearch() {
     document.getElementById("searchBar").style.color = "rgba(0,0,0,0.87)";
     document.getElementById("magnify").style.color = "rgba(0,0,0,0.87)"
     document.getElementById("searchOverlay").style.display = "block";
+	setFocus("searchBox");
 }
 
 
-function translateElement(id, end) {
-    document.getElementById(id).style.transform = "translateX(" + end + "%)";
+function translateElement(id,end,axis) {
+	if (axis == "x"){
+		document.getElementById(id).style.transform = "translateX(" + end + "%)";
+	} else {
+		document.getElementById(id).style.transform = "translateY(" + end + "%)";
+	}
+    
 }
+
+var nav = document.getElementById("topNav");
+var navBottom = findBot("topNav");
+var prevOffset=0;
+var scrolled = false;
+var initialScroll = false;
+
+window.onscroll = function() {scrollNav()};
+
+
+function findBot(id){
+	return document.getElementById(id).offsetTop + document.getElementById(id).offsetHeight;
+}
+
+
+function scrollNav(){
+	
+	if(isTouchDevice()){
+		
+		if(window.pageYOffset>prevOffset ){
+			
+			if(!scrolled){
+				
+				if(window.pageYOffset > navBottom){
+					if(!initialScroll) {
+						translateElement("topNav",-105,"y");
+						scrolled=true;
+						initialScroll = true;
+					} else {
+						prevOffset = window.pageYOffset
+
+						setTimeout(function () {
+							if(window.pageYOffset > prevOffset){
+								translateElement("topNav",-105,"y");
+								scrolled=true;
+							}	
+						}, 250);
+					}
+				}
+				
+				
+			}
+			
+			
+			
+		} else if(window.pageYOffset<prevOffset){
+			
+			if(scrolled){
+				
+				if(window.pageYOffset <= navBottom){
+						translateElement("topNav",0,"y");
+						scrolled=false;
+						initialScroll=false;
+				}	
+
+				
+				prevOffset = window.pageYOffset
+				
+				setTimeout(function () {
+					if(window.pageYOffset < prevOffset){
+						translateElement("topNav",0,"y");
+						scrolled=false;
+					}	
+				}, 350);  
+				
+				
+			}
+			
+		} else {}
+		
+		
+		prevOffset = window.pageYOffset;
+		
+		
+	}
+}
+
+
+
 
 
 function isANumber(str) {
@@ -243,7 +343,7 @@ function getEngine() { //Redirects users using IE or Safari to the chrome downlo
     var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
     var isFirefox = typeof InstallTrigger !== 'undefined';
 
-    if (isIE == true || isSafari == true || isFirefox == true) {
+    if (isIE == true || isSafari == true) {
         window.open("https://www.google.com/chrome/", "_self");
     }
 }
