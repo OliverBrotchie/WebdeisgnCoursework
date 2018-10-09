@@ -6,11 +6,60 @@ function loadDoc() {
     activeTab(1);
     activeTab('xxsmall');
     circularize();
+    hoverable();
 
     //redirects user to a better browser
     if (getEngine() == "IE" || getEngine() == "Safari" || getEngine() == "Unknown") {
         window.open("https://www.google.com/chrome/", "_self");
     }
+
+
+}
+
+//Adds hoverable functionality to all elements of the hoverable class
+function hoverable() {
+    var x = document.getElementsByClassName("hoverable");
+    var parent;
+    var child;
+
+    for (i = 0; i < x.length; i++) {
+        child = x[i];
+        parent = child.parentNode;
+
+        if (parent.classList.contains("large") && !isTouchDevice("mobile")) {
+            var sibling = parent.nextElementSibling;
+
+            parent.style.paddingBottom = parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))) +0.5 + "px";
+
+            child.style.height = ((parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))))+0.5) + parent.offsetHeight + "px";
+            child.style.width = parent.offsetWidth + "px";
+        } else {
+            child.style.height = parent.offsetHeight + "px";
+            child.style.width = parent.offsetWidth + "px";
+        }
+        
+
+
+        setTimeout(function () {
+            child.classList.remove('fadeOut');
+        }, 500);
+
+    }
+
+    //Event handler variables operate weirdly in javascript so it must be initiated individually
+
+    x[0].addEventListener("mouseleave", function (event) {
+        x[0].classList.add('fadeOut');
+    })
+
+
+    x[1].addEventListener("mouseleave", function (event) {
+        x[1].classList.add('fadeOut');
+    })
+
+    x[2].addEventListener("mouseleave", function (event) {
+        x[2].classList.add('fadeOut');
+    })
 
 
 }

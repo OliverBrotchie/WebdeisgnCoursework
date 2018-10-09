@@ -736,7 +736,10 @@ p {
     height: auto;
 }
 
+.large{
+    padding:0px;
 
+}
 .image-sidenav {
     display: none;
     padding-top: 5% !important;
@@ -853,6 +856,32 @@ div {
     text-align: center;
 }
 
+.hoverable {
+    z-index: 2;
+    position: absolute;
+    display: block;
+    background-color: rgba(255,255,255, 0.4);
+    will-change: opacity;
+    opacity: 0;
+}
+
+    .hoverable:hover {
+        animation-name: fadeInOpacity;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 0.4s;
+        opacity: 1;
+    }
+
+    .hoverable p {
+        font-size: 1.5rem;
+        line-height: 1;
+        padding-top: 20%;
+    }
+
+.noPad {
+    padding: 0 !important;
+}
 
 .parallax-text {
     background-color: #111;
