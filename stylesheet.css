@@ -736,6 +736,9 @@ p {
     height: auto;
 }
 
+.large {
+    padding: 0px;
+}
 .image-sidenav {
     display: none;
     padding-top: 5% !important;
