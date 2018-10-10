@@ -6,7 +6,7 @@ function loadDoc() {
     activeTab(1);
     activeTab('xxsmall');
     circularize();
-    hoverable();
+    //hoverable();
 
     //redirects user to a better browser
     if (getEngine() == "IE" || getEngine() == "Safari" || getEngine() == "Unknown") {
@@ -17,7 +17,7 @@ function loadDoc() {
 }
 
 //Adds hoverable functionality to all elements of the hoverable class
-function hoverable() {
+/*function hoverable() {
     var x = document.getElementsByClassName("hoverable");
     var parent;
     var child;
@@ -62,7 +62,7 @@ function hoverable() {
     })
 
 
-}
+}*/
 
 
 //circularises elements with the class "circle"
