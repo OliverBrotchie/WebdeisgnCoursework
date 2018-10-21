@@ -1,13 +1,24 @@
 var products = new Array();
+var productBoxes = document.getElementsByClassName("product");
+var modalData;
 
 //called on loading the page
 function loadDoc() {
     getEngine();
+    retiveProducts();
     activeTab(1);
-    activeTab('xxsmall');
-    circularize();
-    //hoverable();
+    activeTab(5);
 
+    circularize();
+    
+
+    document.getElementById("searchBox").addEventListener("keypress", function (event) {
+        var key = event.which || event.keyCode;
+        if (key === 13) { // 13 is enter
+            window.open("https://www.google.co.uk/search?q=" + document.getElementById("searchBox").value, "_self");
+        }
+    })
+    
     //redirects user to a better browser
     if (getEngine() == "IE" || getEngine() == "Safari" || getEngine() == "Unknown") {
         window.open("https://www.google.com/chrome/", "_self");
@@ -16,53 +27,6 @@ function loadDoc() {
 
 }
 
-//Adds hoverable functionality to all elements of the hoverable class
-/*function hoverable() {
-    var x = document.getElementsByClassName("hoverable");
-    var parent;
-    var child;
-
-    for (i = 0; i < x.length; i++) {
-        child = x[i];
-        parent = child.parentNode;
-
-        if (parent.classList.contains("large") && !isTouchDevice("mobile")) {
-            var sibling = parent.nextElementSibling;
-
-            parent.style.paddingBottom = parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))) +0.5 + "px";
-
-            child.style.height = ((parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))))+0.5) + parent.offsetHeight + "px";
-            child.style.width = parent.offsetWidth + "px";
-        } else {
-            child.style.height = parent.offsetHeight + "px";
-            child.style.width = parent.offsetWidth + "px";
-        }
-        
-
-
-        setTimeout(function () {
-            child.classList.remove('fadeOut');
-        }, 500);
-
-    }
-
-    //Event handler variables operate weirdly in javascript so it must be initiated individually
-
-    x[0].addEventListener("mouseleave", function (event) {
-        x[0].classList.add('fadeOut');
-    })
-
-
-    x[1].addEventListener("mouseleave", function (event) {
-        x[1].classList.add('fadeOut');
-    })
-
-    x[2].addEventListener("mouseleave", function (event) {
-        x[2].classList.add('fadeOut');
-    })
-
-
-}*/
 
 
 //circularises elements with the class "circle"
@@ -75,19 +39,27 @@ function circularize() {
     }
 }
 
-//spaghetti code for activating modal tabs (needs updating but works for now)
+//activates tabs in the modal
 function activeTab(tab) {
-    if (isANumber(tab) == true) {
-
-        for (i = 1; i < 5; i++) {
+    if(tab<5){
+        for (i = 1; i <= 4; i++) {
+            document.getElementById("tab-" + i).classList.remove('active');
+        } 
+    } else {
+        for (i = 5; i <= 10; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
         }
     }
+    
+    
+
     switch (tab) {
 
         case 1:
             document.getElementById("tab-1").classList.add('active');
-            document.getElementById("tab-text").innerHTML = "This is a description about a bike"
+            if(!(modalData === undefined || modalData.length==0)){
+                document.getElementById("tab-text").innerHTML = modalData[2];
+            }
             break;
         case 2:
             document.getElementById("tab-2").classList.add('active');
@@ -102,56 +74,24 @@ function activeTab(tab) {
             document.getElementById("tab-text").innerHTML = "The best way to find out what size of frame you should get is to come in store and try the bike out yourself!"
             break;
 
-        case "xxsmall":
-            document.getElementById("xxsmall").classList.add('active');
-            document.getElementById("xsmall").classList.remove('active');
-            document.getElementById("small").classList.remove('active');
-            document.getElementById("medium").classList.remove('active');
-            document.getElementById("large").classList.remove('active');
-            document.getElementById("xlarge").classList.remove('active');
+        case 5:
+            document.getElementById("tab-5").classList.add('active');
             break;
-
-        case "xsmall":
-            document.getElementById("xxsmall").classList.remove('active');
-            document.getElementById("xsmall").classList.add('active');
-            document.getElementById("small").classList.remove('active');
-            document.getElementById("medium").classList.remove('active');
-            document.getElementById("large").classList.remove('active');
-            document.getElementById("xlarge").classList.remove('active');
+        case 6:
+            document.getElementById("tab-6").classList.add('active');
             break;
-
-        case "small":
-            document.getElementById("xxsmall").classList.remove('active');
-            document.getElementById("xsmall").classList.remove('active');
-            document.getElementById("small").classList.add('active');
-            document.getElementById("medium").classList.remove('active');
-            document.getElementById("large").classList.remove('active');
-            document.getElementById("xlarge").classList.remove('active');
+        case 7:
+            document.getElementById("tab-7").classList.add('active');
             break;
-        case "medium":
-            document.getElementById("xxsmall").classList.remove('active');
-            document.getElementById("xsmall").classList.remove('active');
-            document.getElementById("small").classList.remove('active');
-            document.getElementById("medium").classList.add('active');
-            document.getElementById("large").classList.remove('active');
-            document.getElementById("xlarge").classList.remove('active');
+        case 8:
+            document.getElementById("tab-8").classList.add('active');
             break;
-        case "large":
-            document.getElementById("xxsmall").classList.remove('active');
-            document.getElementById("xsmall").classList.remove('active');
-            document.getElementById("small").classList.remove('active');
-            document.getElementById("medium").classList.remove('active');
-            document.getElementById("large").classList.add('active');
-            document.getElementById("xlarge").classList.remove('active');
-            break;
-        case "xlarge":
-            document.getElementById("xxsmall").classList.remove('active');
-            document.getElementById("xsmall").classList.remove('active');
-            document.getElementById("small").classList.remove('active');
-            document.getElementById("medium").classList.remove('active');
-            document.getElementById("large").classList.remove('active');
-            document.getElementById("xlarge").classList.add('active');
-            break;
+        case 9:
+            document.getElementById("tab-9").classList.add('active');
+            break;  
+        case 10:
+            document.getElementById("tab-10").classList.add('active');
+            break;  
     }
 }
 
@@ -173,26 +113,27 @@ function openNav(nav) {
 
 
 //opens the side nav extension
-function openExtender(type) {
+function openExtender(type,productType) {
     translateElement("navExtended", 0, "x");
 
     for (i = 1; i < 6; i++) {
         document.getElementById("snav-" + i).classList.remove('active');
     }
 
+
     document.getElementById("snav-" + type).classList.add('active');
 
-    displayImages(6);
+    displayProducts(productType,2);
 }
 
 //used for displaying products in the sidenav
 function displayImages(number) {
 
-    for (i = 1; i <= 6; i++) {
-        document.getElementById("i-" + i).style.display = "none";
+    for (i = 0; i <= 5; i++) {
+        productBoxes[i].style.display = "none";
     }
-    for (i = 1; i <= number; i++) {
-        document.getElementById("i-" + i).style.display = "inherit";
+    for (i = 0; i <= number-1; i++) {
+        productBoxes[i].style.display = "inherit";
     }
 
 }
@@ -201,14 +142,22 @@ function closeModal() {
     document.getElementById("modal").style.display = "none";
     document.getElementById("modal-footer").style.display = "none";
     activeTab(1);
-    activeTab('xxsmall')
+    activeTab(5)
 
     document.getElementById("modalOverlay").style.display = "none";
 
 }
 
 
-function openModal(productID) {
+function openModal(id) {
+
+    modalData=products[id];
+
+   
+    document.getElementById("modalProductName").innerHTML = modalData[0];
+    document.getElementById("modalProductPrice").innerHTML = modalData[3];
+
+
     document.getElementById("modal").style.display = "block";
     document.getElementById("modal-footer").style.display = "block";
     openOverlay("modalOverlay");
@@ -416,35 +365,128 @@ function getEngine() {
 }
 
 
-/*
+//currently taking a dummy value
 function retiveProducts() {
-    var xhttp = new XMLHttpRequest();
+    /*var xhttp = new XMLHttpRequest();
     var text;
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             text = this.responseText;
 
-            var result = text.split(";");
-
-            for (i = 0; i <= result.length - 1; i++) {
-                var temp = result[i];
-                temp = temp.split(",");
-                products.push([temp[0], temp[1], temp[2], temp[3]]);
-            }
-
-            displayProducts();
+            
         }
     };
     xhttp.open("GET", "productlist.text", true);
-    xhttp.send();
+    xhttp.send();*/
 
-
+    splitProducts("response1,bike,lol,$100,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg;response2,bike,lol,$600,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg")
+            
+            
 
 }
-*/
-/*
-function displayProducts(){
-	for(i=1;i<3;i++){
-		document.getElementById(i + "-i").src = products[i-1][1];
-	}
+
+//splits a list of products and places in the products variable
+function splitProducts(result){
+    result = result.split(";")
+
+    for (i = 0; i <= result.length - 1; i++) {
+        var temp = result[i];
+        temp = temp.split(",");
+        products.push([temp[0], temp[1], temp[2], temp[3],temp[4]]);
+    }
+
+    //name,type,description,price,image
+}
+
+//displays products of spesified type
+function displayProducts(type,max){
+    var counter = 0;
+    var displayedImages;
+
+
+    if(!(products.length==0)){
+
+
+        for(var i = 0;i<=products.length-1;i++){
+            
+            
+            if(products[i][1]==type && counter<=max-1){
+                
+                productBoxes[counter].addEventListener("click", bindOnClick(counter));
+
+
+                productBoxes[counter].children[0].src = products[i][4];
+                productBoxes[counter].children[1].innerHTML = products[i][0];
+                productBoxes[counter].children[2].innerHTML = products[i][3];
+
+                closeModal();
+                
+
+
+                counter++;
+            }
+        }
+
+      
+        displayImages(max);
+    }
+    
+    
+    
+}
+
+//Javascript is wierd with variable handeling so onclick needs to be bound
+function bindOnClick(counter) {
+    return function() {
+        openModal(counter);
+    };
+ }
+
+ 
+//Adds hoverable functionality to all elements of the hoverable class
+/*function hoverable() {
+    var x = document.getElementsByClassName("hoverable");
+    var parent;
+    var child;
+
+    for (i = 0; i < x.length; i++) {
+        child = x[i];
+        parent = child.parentNode;
+
+        if (parent.classList.contains("large") && !isTouchDevice("mobile")) {
+            var sibling = parent.nextElementSibling;
+
+            parent.style.paddingBottom = parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))) +0.5 + "px";
+
+            child.style.height = ((parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))))+0.5) + parent.offsetHeight + "px";
+            child.style.width = parent.offsetWidth + "px";
+        } else {
+            child.style.height = parent.offsetHeight + "px";
+            child.style.width = parent.offsetWidth + "px";
+        }
+        
+
+
+        setTimeout(function () {
+            child.classList.remove('fadeOut');
+        }, 500);
+
+    }
+
+    //Event handler variables operate weirdly in javascript so it must be initiated individually
+
+    x[0].addEventListener("mouseleave", function (event) {
+        x[0].classList.add('fadeOut');
+    })
+
+
+    x[1].addEventListener("mouseleave", function (event) {
+        x[1].classList.add('fadeOut');
+    })
+
+    x[2].addEventListener("mouseleave", function (event) {
+        x[2].classList.add('fadeOut');
+    })
+
+
 }*/

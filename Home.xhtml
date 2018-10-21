@@ -57,51 +57,51 @@
     <ul id="sidenav" class="sidenav depth-2">
         <li class="logo-initial">B</li>
 
-        <li id="snav-1" onclick="openExtender('1')">City Bikes</li>
+        <li id="snav-1" onclick="openExtender('1','bike')">City Bikes</li>
 
-        <li id="snav-2" onclick="openExtender('2')">Touring Bikes</li>
+        <li id="snav-2" onclick="openExtender('2','bike')">Touring Bikes</li>
 
-        <li id="snav-3" onclick="openExtender('3')">Hybrid Bikes</li>
+        <li id="snav-3" onclick="openExtender('3','bike')">Hybrid Bikes</li>
 
-        <li id="snav-4" onclick="openExtender('4')">Mountain Bikes</li>
+        <li id="snav-4" onclick="openExtender('4','bike')">Mountain Bikes</li>
 
-        <li id="snav-5" onclick="openExtender('5')">BMX Bikes</li>
+        <li id="snav-5" onclick="openExtender('5','bike')">BMX Bikes</li>
     </ul>
 
 
     <div id="navExtended" class="sidenav-extended depth-2">
-        <ul class="row container">
-            <li id="i-1" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+        <ul class="row">
+            <li class="l-4 m-6 s-12 image-sidenav product">
+                <img id="76" src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <p class="product-title">Lorem Ipsum</p>
+                <p class="light">$220</p>
+            </li>
+
+            <li class="l-4 m-6 s-12 image-sidenav product">
                 <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
-            <li id="i-2" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+            <li class="l-4 m-6 s-12 image-sidenav product">
                 <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
-            <li id="i-3" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+            <li class="l-4 m-6 s-12 image-sidenav product">
                 <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
-            <li id="i-4" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+            <li class="l-4 m-6 s-12 image-sidenav product">
                 <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
-            <li id="i-5" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-
-            <li id="i-6" class="l-4 m-6 s-12 image-sidenav" onclick="openModal()">
+            <li class="l-4 m-6 s-12 image-sidenav product">
                 <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
@@ -120,27 +120,27 @@
             </div>
             <div class="l-6 m-12 s-12">
                 <p class="caption-large" id="modalProductName">Lorem Ipsum</p>
-                <p class="light">$220</p>
+                <p class="light" id="modalProductPrice">$220</p>
 
                 <div class="row">
                     <ul class="tabs">
-                        <li id="xxsmall" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xxsmall')">
+                        <li id="tab-5" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab(5)">
                             <a class="tab-link">xx-small</a>
                         </li>
-                        <li id="xsmall" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xsmall')">
+                        <li id="tab-6" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab(6)">
                             <a class="tab-link">x-small</a>
                         </li>
-                        <li id="small" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('small')">
+                        <li id="tab-7" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab(7)">
                             <a class="tab-link">small</a>
                         </li>
 
-                        <li id="medium" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('medium')">
+                        <li id="tab-8" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab(8)">
                             <a class="tab-link">medium</a>
                         </li>
-                        <li id="large" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('large')">
+                        <li id="tab-9" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab(9)">
                             <a class="tab-link">large</a>
                         </li>
-                        <li id="xlarge" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab('xlarge')">
+                        <li id="tab-10" class="depth-0 tab s-6 m-4 l-4" onclick="activeTab(10)">
                             <a class="tab-link">x-large</a>
                         </li>
                     </ul>
@@ -233,22 +233,22 @@
 
             <div class="row promotional ">
 
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal(0)">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
                 </div>
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal(1)">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
                 </div>
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal(1)">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
                 </div>
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal()">
+                <div class="l-3 m-6 s-12 product-box" onclick="openModal(1)">
                     <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
                     <p class="product-title">Lorem Ipsum</p>
                     <p class="light">$220</p>
