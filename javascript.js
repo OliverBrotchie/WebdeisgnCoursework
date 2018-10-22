@@ -1,6 +1,12 @@
 var products = new Array();
 var productBoxes = document.getElementsByClassName("product");
 var modalData;
+var modalType;
+var loggedIn = false;
+var logInDetails;
+var doubleClick = function(data){
+    window.open("Products.xhtml","_self");
+};
 
 //called on loading the page
 function loadDoc() {
@@ -11,6 +17,7 @@ function loadDoc() {
 
     circularize();
     
+    //login();
 
     document.getElementById("searchBox").addEventListener("keypress", function (event) {
         var key = event.which || event.keyCode;
@@ -24,10 +31,38 @@ function loadDoc() {
         window.open("https://www.google.com/chrome/", "_self");
     }
 
+    //double click function courtesty of jeum on Stack Overflow
+    var makeDoubleClick = function(data) {
 
+        var clicks = 0,
+            timeout;
+        return function (data) {
+          clicks++;
+          if (clicks == 1) {
+            timeout = setTimeout(function () {
+              clicks = 0;
+            }, 250);
+          } else {
+            clearTimeout(timeout);
+            doubleClick(data);
+            clicks = 0;
+          }
+        };
+      }
+    
+    document.getElementById('snav-1').addEventListener('click', makeDoubleClick("bike"), false);
+    document.getElementById('snav-2').addEventListener('click', makeDoubleClick("accesories"), false);
+    document.getElementById('snav-3').addEventListener('click', makeDoubleClick("tools"), false);
+    document.getElementById('s-nav-1').addEventListener('click', makeDoubleClick("bike"), false);
+    document.getElementById('s-nav-2').addEventListener('click', makeDoubleClick("accesories"), false);
+    document.getElementById('s-nav-3').addEventListener('click', makeDoubleClick("tools"), false);
 }
 
-
+function goHome(){
+    if(!(window.location.href.includes("Home.xhtml"))){
+        window.open("Home.xhtml","_self");
+    }
+}
 
 //circularises elements with the class "circle"
 function circularize() {
@@ -50,8 +85,6 @@ function activeTab(tab) {
             document.getElementById("tab-" + i).classList.remove('active');
         }
     }
-    
-    
 
     switch (tab) {
 
@@ -59,6 +92,16 @@ function activeTab(tab) {
             document.getElementById("tab-1").classList.add('active');
             if(!(modalData === undefined || modalData.length==0)){
                 document.getElementById("tab-text").innerHTML = modalData[2];
+
+                setTimeout(function () {
+                    if(modalData === undefined){
+                        activeTab(1);  
+                    }
+                }, 200);
+            } else {
+                setTimeout(function () {
+                    activeTab(1);
+                }, 200);
             }
             break;
         case 2:
@@ -97,18 +140,39 @@ function activeTab(tab) {
 
 //handles opening the side nav for mobile and desktop
 
-
 function openNav() {
     openOverlay("sideNavOverlay");
-    translateElement("sidenav", 0, "x");
-    navOpen = true;
+    if(window.screen.width>=992){ 
+        translateElement("sidenav", 0, "x");
+        
+	} else {    
+        translateElement("s-sidenav", 0, "x");     
+    }
+    navOpen = true; 
 }
 
-function openNav(nav) {
-    translateElement(nav, 0, "x");
-    openOverlay("sideNavOverlay");
-    navOpen = true;
+
+function openLogin(){
+    if(loggedIn){
+        window.open("Account.xhtml","_self");
+    }else {
+        setloginName("Test User");
+
+        openModal(0,2);
+        
+    }
 }
+
+function setloginName(username){
+        document.getElementById("login").innerHTML = username;  
+        document.getElementById("loginMobile").innerHTML = username;
+        loggedIn=true;  
+}
+
+
+
+
+
 
 
 
@@ -116,7 +180,7 @@ function openNav(nav) {
 function openExtender(type,productType) {
     translateElement("navExtended", 0, "x");
 
-    for (i = 1; i < 6; i++) {
+    for (i = 1; i <= 3; i++) {
         document.getElementById("snav-" + i).classList.remove('active');
     }
 
@@ -143,25 +207,31 @@ function closeModal() {
     document.getElementById("modal-footer").style.display = "none";
     activeTab(1);
     activeTab(5)
-
+    modalData = undefined;
     document.getElementById("modalOverlay").style.display = "none";
 
 }
 
 
-function openModal(id) {
+function openModal(id,type) {
 
-    modalData=products[id];
+    document.getElementById("modal1").style.display= "none";
+    document.getElementById("modal2").style.display= "none";
 
-   
-    document.getElementById("modalProductName").innerHTML = modalData[0];
-    document.getElementById("modalProductPrice").innerHTML = modalData[3];
+    if(type == 1){
+        modalType = 1;
+        document.getElementById("modal1").style.display= "inherit";
 
-
+        modalData=products[id];
+    }else {
+        modalType = 2;
+        document.getElementById("modal2").style.display= "inherit";
+    }
     document.getElementById("modal").style.display = "block";
     document.getElementById("modal-footer").style.display = "block";
     openOverlay("modalOverlay");
 }
+
 
 // handles opening and closing of any overlays
 function closeOverlay(overlayID) {
@@ -203,7 +273,7 @@ function closeNav() {
     displayImages(0);
 
 
-    for (i = 1; i < 6; i++) {
+    for (i = 1; i <= 3; i++) {
         document.getElementById("snav-" + i).classList.remove('active');
     }
 
@@ -379,7 +449,7 @@ function retiveProducts() {
     xhttp.open("GET", "productlist.text", true);
     xhttp.send();*/
 
-    splitProducts("response1,bike,lol,$100,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg;response2,bike,lol,$600,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg")
+    splitProducts("response1,bike,This is a description for response one,$100,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg;response2,bike,this is a description for response two,$600,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg")
             
             
 
@@ -438,11 +508,14 @@ function displayProducts(type,max){
 //Javascript is wierd with variable handeling so onclick needs to be bound
 function bindOnClick(counter) {
     return function() {
-        openModal(counter);
+        openModal(counter,1);
     };
  }
 
- 
+
+
+
+
 //Adds hoverable functionality to all elements of the hoverable class
 /*function hoverable() {
     var x = document.getElementsByClassName("hoverable");
