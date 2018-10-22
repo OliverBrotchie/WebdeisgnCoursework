@@ -801,12 +801,14 @@ div {
     text-align: center
 }
 
-.logo-initial {
-    margin-top: 80px;
+.logo {
+    margin-top: 60px;
     margin-bottom: 20px;
-    font-size: 4rem;
+    font-size: 7rem;
     color: #FFC107;
 }
+    
+
 
 .parallax {
     position: relative;
