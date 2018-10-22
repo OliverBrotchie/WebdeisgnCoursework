@@ -4,9 +4,7 @@ var modalData;
 var modalType;
 var loggedIn = false;
 var logInDetails;
-var doubleClick = function(data){
-    window.open("Products.xhtml","_self");
-};
+var clicks = 0;
 
 //called on loading the page
 function loadDoc() {
@@ -16,7 +14,7 @@ function loadDoc() {
     activeTab(5);
 
     circularize();
-    
+
     //login();
 
     document.getElementById("searchBox").addEventListener("keypress", function (event) {
@@ -25,42 +23,41 @@ function loadDoc() {
             window.open("https://www.google.co.uk/search?q=" + document.getElementById("searchBox").value, "_self");
         }
     })
-    
+
     //redirects user to a better browser
     if (getEngine() == "IE" || getEngine() == "Safari" || getEngine() == "Unknown") {
         window.open("https://www.google.com/chrome/", "_self");
     }
 
-    //double click function courtesty of jeum on Stack Overflow
-    var makeDoubleClick = function(data) {
 
-        var clicks = 0,
-            timeout;
-        return function (data) {
-          clicks++;
-          if (clicks == 1) {
-            timeout = setTimeout(function () {
-              clicks = 0;
-            }, 250);
-          } else {
-            clearTimeout(timeout);
-            doubleClick(data);
-            clicks = 0;
-          }
-        };
-      }
-    
-    document.getElementById('snav-1').addEventListener('click', makeDoubleClick("bike"), false);
-    document.getElementById('snav-2').addEventListener('click', makeDoubleClick("accesories"), false);
-    document.getElementById('snav-3').addEventListener('click', makeDoubleClick("tools"), false);
-    document.getElementById('s-nav-1').addEventListener('click', makeDoubleClick("bike"), false);
-    document.getElementById('s-nav-2').addEventListener('click', makeDoubleClick("accesories"), false);
-    document.getElementById('s-nav-3').addEventListener('click', makeDoubleClick("tools"), false);
+   document.getElementById('snav-1').addEventListener('mouseup', checkDoubleClick("bike"), false);
+   document.getElementById('snav-2').addEventListener('mouseup', checkDoubleClick("accesories"), false);
+   document.getElementById('snav-3').addEventListener('mouseup', checkDoubleClick("tools"), false);
 }
 
-function goHome(){
-    if(!(window.location.href.includes("Home.xhtml"))){
-        window.open("Home.xhtml","_self");
+function checkDoubleClick(data) {
+    return function (data) {
+        clicks++;
+        setTimeout(function () {
+            if (clicks > 1) {
+                DoubleClick(data);
+            } else {
+                clicks = 0;
+            }
+        }, 250);
+    }
+
+
+}
+
+
+function DoubleClick(data) {
+    window.open("Products.xhtml#" + data, "_self");
+}
+
+function goHome() {
+    if (!(window.location.href.includes("Home.xhtml"))) {
+        window.open("Home.xhtml", "_self");
     }
 }
 
@@ -76,10 +73,10 @@ function circularize() {
 
 //activates tabs in the modal
 function activeTab(tab) {
-    if(tab<5){
+    if (tab < 5) {
         for (i = 1; i <= 4; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
-        } 
+        }
     } else {
         for (i = 5; i <= 10; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
@@ -90,12 +87,12 @@ function activeTab(tab) {
 
         case 1:
             document.getElementById("tab-1").classList.add('active');
-            if(!(modalData === undefined || modalData.length==0)){
+            if (!(modalData === undefined || modalData.length == 0)) {
                 document.getElementById("tab-text").innerHTML = modalData[2];
 
                 setTimeout(function () {
-                    if(modalData === undefined){
-                        activeTab(1);  
+                    if (modalData === undefined) {
+                        activeTab(1);
                     }
                 }, 200);
             } else {
@@ -131,10 +128,10 @@ function activeTab(tab) {
             break;
         case 9:
             document.getElementById("tab-9").classList.add('active');
-            break;  
+            break;
         case 10:
             document.getElementById("tab-10").classList.add('active');
-            break;  
+            break;
     }
 }
 
@@ -142,31 +139,31 @@ function activeTab(tab) {
 
 function openNav() {
     openOverlay("sideNavOverlay");
-    if(window.screen.width>=992){ 
+    if (window.screen.width >= 992) {
         translateElement("sidenav", 0, "x");
-        
-	} else {    
-        translateElement("s-sidenav", 0, "x");     
+
+    } else {
+        translateElement("s-sidenav", 0, "x");
     }
-    navOpen = true; 
+    navOpen = true;
 }
 
 
-function openLogin(){
-    if(loggedIn){
-        window.open("Account.xhtml","_self");
-    }else {
+function openLogin() {
+    if (loggedIn) {
+        window.open("Account.xhtml", "_self");
+    } else {
         setloginName("Test User");
 
-        openModal(0,2);
-        
+        openModal(0, 2);
+
     }
 }
 
-function setloginName(username){
-        document.getElementById("login").innerHTML = username;  
-        document.getElementById("loginMobile").innerHTML = username;
-        loggedIn=true;  
+function setloginName(username) {
+    document.getElementById("login").innerHTML = username;
+    document.getElementById("loginMobile").innerHTML = username;
+    loggedIn = true;
 }
 
 
@@ -177,7 +174,7 @@ function setloginName(username){
 
 
 //opens the side nav extension
-function openExtender(type,productType) {
+function openExtender(type, productType) {
     translateElement("navExtended", 0, "x");
 
     for (i = 1; i <= 3; i++) {
@@ -187,7 +184,7 @@ function openExtender(type,productType) {
 
     document.getElementById("snav-" + type).classList.add('active');
 
-    displayProducts(productType,2);
+    displayProducts(productType, 2);
 }
 
 //used for displaying products in the sidenav
@@ -196,7 +193,7 @@ function displayImages(number) {
     for (i = 0; i <= 5; i++) {
         productBoxes[i].style.display = "none";
     }
-    for (i = 0; i <= number-1; i++) {
+    for (i = 0; i <= number - 1; i++) {
         productBoxes[i].style.display = "inherit";
     }
 
@@ -213,19 +210,19 @@ function closeModal() {
 }
 
 
-function openModal(id,type) {
+function openModal(id, type) {
 
-    document.getElementById("modal1").style.display= "none";
-    document.getElementById("modal2").style.display= "none";
+    document.getElementById("modal1").style.display = "none";
+    document.getElementById("modal2").style.display = "none";
 
-    if(type == 1){
+    if (type == 1) {
         modalType = 1;
-        document.getElementById("modal1").style.display= "inherit";
+        document.getElementById("modal1").style.display = "inherit";
 
-        modalData=products[id];
-    }else {
+        modalData = products[id];
+    } else {
         modalType = 2;
-        document.getElementById("modal2").style.display= "inherit";
+        document.getElementById("modal2").style.display = "inherit";
     }
     document.getElementById("modal").style.display = "block";
     document.getElementById("modal-footer").style.display = "block";
@@ -450,38 +447,38 @@ function retiveProducts() {
     xhttp.send();*/
 
     splitProducts("response1,bike,This is a description for response one,$100,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg;response2,bike,this is a description for response two,$600,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg")
-            
-            
+
+
 
 }
 
 //splits a list of products and places in the products variable
-function splitProducts(result){
+function splitProducts(result) {
     result = result.split(";")
 
     for (i = 0; i <= result.length - 1; i++) {
         var temp = result[i];
         temp = temp.split(",");
-        products.push([temp[0], temp[1], temp[2], temp[3],temp[4]]);
+        products.push([temp[0], temp[1], temp[2], temp[3], temp[4]]);
     }
 
     //name,type,description,price,image
 }
 
 //displays products of spesified type
-function displayProducts(type,max){
+function displayProducts(type, max) {
     var counter = 0;
     var displayedImages;
 
 
-    if(!(products.length==0)){
+    if (!(products.length == 0)) {
 
 
-        for(var i = 0;i<=products.length-1;i++){
-            
-            
-            if(products[i][1]==type && counter<=max-1){
-                
+        for (var i = 0; i <= products.length - 1; i++) {
+
+
+            if (products[i][1] == type && counter <= max - 1) {
+
                 productBoxes[counter].addEventListener("click", bindOnClick(counter));
 
 
@@ -490,27 +487,27 @@ function displayProducts(type,max){
                 productBoxes[counter].children[2].innerHTML = products[i][3];
 
                 closeModal();
-                
+
 
 
                 counter++;
             }
         }
 
-      
+
         displayImages(max);
     }
-    
-    
-    
+
+
+
 }
 
 //Javascript is wierd with variable handeling so onclick needs to be bound
 function bindOnClick(counter) {
-    return function() {
-        openModal(counter,1);
+    return function () {
+        openModal(counter, 1);
     };
- }
+}
 
 
 
