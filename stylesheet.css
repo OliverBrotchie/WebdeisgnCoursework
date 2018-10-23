@@ -475,7 +475,7 @@ p {
 }
 
 .topNav {
-    background-color: #009688;
+    background-color: #5B8499;
     overflow: hidden;
     position: fixed;
     left: 0;
@@ -530,6 +530,7 @@ p {
     width: 100%;
     display: inline-block;
     z-index: 0;
+    background-color: #fff;
 }
 
 .topNav input[type=text] {
@@ -547,6 +548,38 @@ p {
     text-align: left;
 }
 
+.textInput{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #9e9e9e;
+    border-radius: 0;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    -webkit-transition: border .3s;
+    transition: border .3s;
+    float:left;
+    text-align:left;
+}
+
+label{
+    transition: color .3s;
+    text-align: left;
+    float:left;
+}
+.textInput:focus{
+    border-bottom: 1px solid #26a69a;
+}
+.textActive{
+    color:#26a69a !important;
+}
 .input-field {
     height: 66px;
     margin-bottom: 1em;
@@ -558,6 +591,10 @@ p {
     padding-top: 0;
     padding-bottom: 0;
 }
+
+    .input-field label{
+        color:rgba(0,0,0,0.87);
+    }
 
     .input-field i {
         height: 66px;
@@ -577,7 +614,7 @@ p {
     height: 100%;
     margin: 0;
     position: fixed;
-    background-color: #424242;
+    background-color:#19242A;
     color: #fff;
     z-index: 997;
     overflow-y: auto;
@@ -753,6 +790,11 @@ div {
     display: block;
 }
 
+.divider{
+    height:1px;
+    background-color: #9e9e9e;
+    padding:0;
+}
 
 .promo i {
     margin: 40px 0;
@@ -773,7 +815,7 @@ div {
     text-align: center;
     display: block;
     white-space: nowrap;
-    color: #FFC107;
+    color: #fff;
     letter-spacing: 8px;
     padding: 0;
     float: left;
@@ -805,7 +847,7 @@ div {
     margin-top: 60px;
     margin-bottom: 20px;
     font-size: 7rem;
-    color: #FFC107;
+    color: #FFF;
 }
     
 
@@ -824,18 +866,18 @@ div {
 }
 
 #parallax1 {
-    background-image: url("media/lake.jpeg");
+    background-image: url("media/mountain.jpg");
     min-height: 300px;
 }
 
 
 #parallax2 {
-    background-image: url("media/road2.jpeg");
+    background-image: url("media/lake.jpeg");
     min-height: 400px;
 }
 
 #parallax3 {
-    background-image: url("media/road.jpg");
+    background-image: url("media/smog.jpg");
     min-height: 400px;
 }
 
@@ -898,12 +940,12 @@ a, a:hover, a:visited, a:active {
 }
 
 .footer {
-    background-color: #009688;
+    background-color: #5B8499;
     height: 40px;
 }
 
 .footer-bot {
-    background-color: #00897B;
+    background-color: #4B6D7E;
     height: 50px;
 }
 
@@ -934,7 +976,7 @@ a, a:hover, a:visited, a:active {
     padding: 0;
     left: 0;
     right: 0;
-    background: #424242;
+    background: #19242A;
     height: 77px;
     text-align: right;
     margin: auto;
@@ -943,7 +985,8 @@ a, a:hover, a:visited, a:active {
     #modal-footer i {
         margin-right: 50px;
         font-size: 4rem;
-        color: #FFC107;
+        color: #ffab00
+        ;
     }
 
 #s-menu {
@@ -954,7 +997,7 @@ a, a:hover, a:visited, a:active {
 
 .active {
     color: #fff;
-    background-color: #ab9a6f;
+    background-color: #436170;
     -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }

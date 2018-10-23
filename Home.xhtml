@@ -39,7 +39,7 @@
     </div>
 
     <ul id="s-sidenav" class="sidenav depth-2">
-            <li class="logo-initial"><a rel="Home" onclick="goHome();"><i class="material-icons">waves</i></a></li>
+        <li><a rel="Home" onclick="goHome();"><i class="material-icons logo">cloud_queue</i></a></li>
 
         <li><a id="loginMobile" onclick="openLogin()" class="noStyle">Login/Sign Up</a></li>
 
@@ -53,7 +53,7 @@
     </ul>
 
     <ul id="sidenav" class="sidenav depth-2">
-        <li><a rel="Home" onclick="goHome();"><i class="material-icons logo">waves</i></a></li>
+        <li><a rel="Home" onclick="goHome();"><i class="material-icons logo">cloud_queue</i></a></li>
         
         <li id="snav-1" onclick="openExtender('1','bike')"><a>Bikes</a></li>
 
@@ -65,43 +65,43 @@
 
 
     <div id="navExtended" class="sidenav-extended depth-2">
-        <ul class="row">
-            <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-
-            <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-
-            <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-
-            <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-
-            <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-
-            <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                <p class="product-title">Lorem Ipsum</p>
-                <p class="light">$220</p>
-            </li>
-        </ul>
+            <ul class="row">
+                <li class="l-4 m-6 s-12 image-sidenav product">
+                    <img class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </li>
+    
+                <li class="l-4 m-6 s-12 image-sidenav product">
+                    <img class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </li>
+    
+                <li class="l-4 m-6 s-12 image-sidenav product">
+                    <img class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </li>
+    
+                <li class="l-4 m-6 s-12 image-sidenav product">
+                    <img class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </li>
+    
+                <li class="l-4 m-6 s-12 image-sidenav product">
+                    <img class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </li>
+    
+                <li class="l-4 m-6 s-12 image-sidenav product">
+                    <img class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </li>
+            </ul>
     </div>
 
     <div id="sideNavOverlay" onclick="closeNav()"></div>
@@ -164,8 +164,44 @@
             </div>
             <p id="tab-text" class="light s-10 m-10 l-10">An awesome Bike</p>
         </div>
-        <div id="modal2" style="display:none">
-            <p>SOME STUFF ABOUT lOGIN</p>
+
+        <div id="modal2" style="display:none" class="container">
+            <div class="row">
+                <div class="l-12 m-12 s-12">
+                        <div class="l-6 m-6 s-12">
+                                <div id="loginTab" onclick="activeTab(11);loginContent(1)" class="tab"><a class="tab-link">Login</a></div>
+                                <div id="signUpTab" onclick="activeTab(12);loginContent(2)" class="tab"><a class="tab-link">Sign Up</a></div>
+                        </div>
+                </div>
+                <div id="loginContent1">
+                    <div class="input-field l-6">
+                        <label for="username">Username:</label>
+                        <input id="username" onfocusout="setActive('username')"  onfocus="setActive('username')" class="textInput"/>
+                    </div>
+                    <div class="input-field l-6">
+                        <label for="password">Password:</label>
+                        <input id="password"  onfocusout="setActive('password')"  onfocus="setActive('password')" class="textInput"/>
+                    </div>
+                </div>
+                <div id="loginContent2" style="display:none;">
+                    <div class="input-field l-6">
+                        <label for="usernameS">Username:</label>
+                        <input id="usernameS" onfocusout="setActive('usernameS')"  onfocus="setActive('usernameS')" class="textInput"/>
+                    </div>
+                    <div class="input-field l-6">
+                        <label for="passwordS">Password:</label>
+                        <input id="passwordS"  onfocusout="setActive('passwordS')"  onfocus="setActive('passwordS')" class="textInput"/>
+                    </div>
+                    <div class="input-field l-6">
+                        <label for="name">Name:</label>
+                        <input id="name"  onfocusout="setActive('name')"  onfocus="setActive('name')" class="textInput"/>
+                    </div>
+                    <div class="input-field l-6">
+                        <label for="email">Email:</label>
+                        <input id="email"  onfocusout="setActive('email')"  onfocus="setActive('email')" class="textInput"/>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row container">
             

@@ -5,15 +5,15 @@
 
 <head>
 
-    <title>Bike</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Ayre</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-32"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Oliver Brotchie, Seamus Mulan" />
+    <meta name="author" content="Oliver Brotchie, Seamus Mullan" />
     <meta name="description" content="The online retail store for all your Biking needs!" />
     <meta name="keywords" content="cycle, cycling, bike, biking, bicycle, bikes, bicycles,store, maintenance" />
     <meta name="robots" content="index, follow" />
 
-    <link rel="icon" type="image/png" href="media/icon.png" />
+    <link rel="icon" type="image/png" href="media/icon.png"/>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -28,7 +28,7 @@
         <div class="l-3 m-0 s-0" id="navLinks">
             <a id="login" onclick="openLogin()" class="nav-btn">Login/Sign Up</a>
         </div>
-        <div id="title"><a rel="Home" onclick="goHome();">Bike</a></div>
+        <div id="title"><a rel="Home" onclick="goHome();">Ayre</a></div>
 
         <div class="right input-field" onclick="activateSearch()" id="searchBar">
             <input type="text" id="searchBox" />
@@ -38,9 +38,8 @@
         </div>
     </div>
 
-
     <ul id="s-sidenav" class="sidenav depth-2">
-            <li class="logo-initial"><a rel="Home" onclick="goHome();">B</a></li>
+        <li><a rel="Home" onclick="goHome();"><i class="material-icons logo">cloud_queue</i></a></li>
 
         <li><a id="loginMobile" onclick="openLogin()" class="noStyle">Login/Sign Up</a></li>
 
@@ -54,7 +53,7 @@
     </ul>
 
     <ul id="sidenav" class="sidenav depth-2">
-        <li class="logo-initial"><a rel="Home" onclick="goHome();">B</a></li>
+        <li><a rel="Home" onclick="goHome();"><i class="material-icons logo">cloud_queue</i></a></li>
 
         <li id="snav-1"><a href="Products.xhtml#Bikes">Bikes</a></li>
 
@@ -68,37 +67,37 @@
     <div id="navExtended" class="sidenav-extended depth-2">
         <ul class="row">
             <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <img class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
             <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <img class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
             <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <img class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
             <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <img class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
             <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <img class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
 
             <li class="l-4 m-6 s-12 image-sidenav product">
-                <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                <img class="img image-product" alt="picture of bike" />
                 <p class="product-title">Lorem Ipsum</p>
                 <p class="light">$220</p>
             </li>
@@ -165,12 +164,44 @@
             </div>
             <p id="tab-text" class="light s-10 m-10 l-10">An awesome Bike</p>
         </div>
-        <div id="modal2" style="display:none">
-            <p>SOME STUFF ABOUT lOGIN</p>
-        </div>
-        <div class="row container">
-
-        </div>
+        <div id="modal2" style="display:none" class="container">
+                <div class="row">
+                    <div class="l-12 m-12 s-12">
+                            <div class="l-6 m-6 s-12">
+                                    <div id="loginTab" onclick="activeTab(11);loginContent(1)" class="tab"><a class="tab-link">Login</a></div>
+                                    <div id="signUpTab" onclick="activeTab(12);loginContent(2)" class="tab"><a class="tab-link">Sign Up</a></div>
+                            </div>
+                    </div>
+                    <div id="loginContent1">
+                        <div class="input-field l-6 m-6 s-12">
+                            <label for="username">Username:</label>
+                            <input id="username" onfocusout="setActive('username')"  onfocus="setActive('username')" class="textInput"/>
+                        </div>
+                        <div class="input-field l-6 m-6 s-12">
+                            <label for="password">Password:</label>
+                            <input id="password"  onfocusout="setActive('password')"  onfocus="setActive('password')" class="textInput"/>
+                        </div>
+                    </div>
+                    <div id="loginContent2" style="display:none;">
+                        <div class="input-field l-6 m-6 s-12">
+                            <label for="usernameS">Username:</label>
+                            <input id="usernameS" onfocusout="setActive('usernameS')"  onfocus="setActive('usernameS')" class="textInput"/>
+                        </div>
+                        <div class="input-field l-6 m-6 s-12">
+                            <label for="passwordS">Password:</label>
+                            <input id="passwordS"  onfocusout="setActive('passwordS')"  onfocus="setActive('passwordS')" class="textInput"/>
+                        </div>
+                        <div class="input-field l-6 m-6 s-12">
+                            <label for="name">Name:</label>
+                            <input id="name"  onfocusout="setActive('name')"  onfocus="setActive('name')" class="textInput"/>
+                        </div>
+                        <div class="input-field l-6 m-6 s-12">
+                            <label for="email">Email:</label>
+                            <input id="email"  onfocusout="setActive('email')"  onfocus="setActive('email')" class="textInput"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
 
     <div id="modal-footer" class="depth-2 l-11 m-11 s-11">

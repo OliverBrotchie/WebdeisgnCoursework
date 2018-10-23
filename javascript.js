@@ -5,6 +5,7 @@ var modalType;
 var loggedIn = false;
 var logInDetails;
 var clicks = 0;
+var inputType = 1;
 
 //called on loading the page
 function loadDoc() {
@@ -12,6 +13,7 @@ function loadDoc() {
     retiveProducts();
     activeTab(1);
     activeTab(5);
+    activeTab(11);
 
     circularize();
 
@@ -34,6 +36,44 @@ function loadDoc() {
    document.getElementById('snav-2').addEventListener('mouseup', checkDoubleClick("accesories"), false);
    document.getElementById('snav-3').addEventListener('mouseup', checkDoubleClick("tools"), false);
 }
+
+function setActive(id){
+    var x = document.getElementById(id).previousElementSibling;
+    if(x.classList.contains("textActive")){
+        x.classList.remove("textActive");
+    } else {
+        x.classList.add("textActive");
+    }
+}
+
+function loginContent(type){
+    if(type == 1){
+        document.getElementById("loginContent1").style.display = "block"
+        document.getElementById("loginContent2").style.display = "none"
+        inputType=1;
+    } else {
+        document.getElementById("loginContent2").style.display = "block"
+        document.getElementById("loginContent1").style.display = "none"
+        inputType=2;
+    }
+}
+
+
+function openLogin() {
+    if (loggedIn) {
+        window.open("Account.xhtml", "_self");
+    } else {
+        openModal(0, 2);
+
+    }
+}
+
+function setloginName(username) {
+    document.getElementById("login").innerHTML = username;
+    document.getElementById("loginMobile").innerHTML = username;
+    loggedIn = true;
+}
+
 
 function checkDoubleClick(data) {
     return function (data) {
@@ -77,10 +117,13 @@ function activeTab(tab) {
         for (i = 1; i <= 4; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
         }
-    } else {
+    } else if(tab < 11){
         for (i = 5; i <= 10; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
         }
+    } else {
+        document.getElementById("loginTab").classList.remove('active');
+        document.getElementById("signUpTab").classList.remove('active');
     }
 
     switch (tab) {
@@ -132,6 +175,12 @@ function activeTab(tab) {
         case 10:
             document.getElementById("tab-10").classList.add('active');
             break;
+        case 11:
+            document.getElementById("loginTab").classList.add('active');
+            break;
+        case 12:
+            document.getElementById("signUpTab").classList.add('active');
+            break;
     }
 }
 
@@ -149,22 +198,6 @@ function openNav() {
 }
 
 
-function openLogin() {
-    if (loggedIn) {
-        window.open("Account.xhtml", "_self");
-    } else {
-        setloginName("Test User");
-
-        openModal(0, 2);
-
-    }
-}
-
-function setloginName(username) {
-    document.getElementById("login").innerHTML = username;
-    document.getElementById("loginMobile").innerHTML = username;
-    loggedIn = true;
-}
 
 
 
