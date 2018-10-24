@@ -450,6 +450,11 @@ body {
     margin-left: 8%;
 }
 
+.caption-small{
+    text-align:left;
+    padding-bottom: 2rem;
+    font-size: 1.25em;
+}
 
 li {
     float: none;

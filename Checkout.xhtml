@@ -21,7 +21,7 @@
 
 </head>
 
-<body onload="loadDoc();">
+<body onload="loadDoc();loadProduct()">
 
     <div class="topNav row depth-3" id="topNav">
         <i id="s-menu" onclick="openNav()" class="material-icons nav-btn">menu</i>
@@ -165,9 +165,8 @@
             <p id="tab-text" class="light s-10 m-10 l-10">An awesome Bike</p>
         </div>
 
-        
         <div id="modal2" style="display:none" class="container">
-            <div class="row">
+                <div class="row">
                 <div class="l-12 m-12 s-12">
                         <div class="l-6 m-6 s-12">
                             <div id="loginTab" onclick="activeTab(11);loginContent(1)" class="tab"><a class="tab-link">Login</a></div>
@@ -215,114 +214,40 @@
         <div class="parallax" id="parallax1"></div>
 
         <div class="section-white">
+            
             <div class="row container">
-                <div class="s-12 m-6 l-4 promotional">
-                    <div class="promo">
-                        <i class="material-icons">work</i>
-                        <p class="caption">Cycle To Work Schemes</p>
-                        <p class="light">Evans Cycles Ride-to-Work is a leading provider of the Cycle to Work scheme
-                            with excellent tax savings on a wide range of bikes and equipment.</p>
-                    </div>
+                <div class="l-12 m-12 s-12" stlye="height:3rem;"></div>
+                <div class="l-6 m-6 s-12">
+                    <p class="caption-small" id="productName">Product:</p>
                 </div>
-                <div class="s-12 m-6 l-4 promotional">
-                    <div class="promo">
-                        <i class="material-icons">touch_app</i>
-                        <p class="caption">Free Click And Collect</p>
-                        <p class="light">With over 60 stores across the UK, finding the nearest store to you is only
-                            one click away.</p>
-                    </div>
+                <div class="l-6 m-6 s-12">
+                    <p class="caption-small" id="price">Price per item:</p>
                 </div>
-                <div class="s-12 m-12 l-4 promotional">
-                    <div class="promo">
-                        <i class="material-icons">credit_card</i>
-                        <p class="caption">0% Finance Available</p>
-                        <p class="light">If you are spending over $499, you can choose between 0% finance over 12
-                            months or low cost finance (9.9% APR) over up to 4 years.</p>
-                    </div>
+                <div class="input-field l-6 m-6 s-12">
+                    <label for="adress">Adress:</label>
+                    <input type="text" id="adress" onfocusout="setActive('adress')"  onfocus="setActive('adress')" class="textInput"/>
                 </div>
-            </div>
-            <!--div class="row container">
-                <div class="l-8 m-8 s-12 product-box large">
-                    <a class="hoverable">
-                        <p>Lorem Ipsum<br/>$220</p>
-                    </a>
-                    <img src="media/bikeimage.jpg" class="img image-product" />
+                <div class="input-field l-6 m-6 s-12">
+                    <label for="postCode">Postcode:</label>
+                    <input type="text" id="postCode"  onfocusout="setActive('postCode')"  onfocus="setActive('postCode')" class="textInput"/>
                 </div>
-                <div class="l-4 m-4 s-12 noPad product-box">
-                    <a class="hoverable">
-                        <p>Lorem Ipsum<br />$220</p>
-                    </a>
-                    <img src="media/bikeimage.jpg" class="img image-product" />
+                <div class="input-field l-6 m-6 s-12">
+                    <label for="number">Contact Number:</label>
+                    <input type="number" min="1" id="number"  onfocusout="setActive('number')"  onfocus="setActive('number')" class="textInput"/>
                 </div>
-                <div class="l-4 m-4 s-12 noPad product-box">
-                    <a class="hoverable">
-                        <p>Lorem Ipsum<br />$220</p>
-                    </a>
-                    <img src="media/bikeimage.jpg" class="img image-product" />
+                <div class="input-field l-6 m-6 s-12">
+                    <label for="quantity">Quantity: </label>
+                    <input type="number" min="1" id="quantity" value="1" onfocusout="setActive('quantity')"  onfocus="setActive('quantity')" class="textInput"/>
                 </div>
-            </div-->
+                <div class="l-12 m-12 s-12" style="height:2rem;"></div>
 
+                <a class="btn" style="background-color:#436170;color:#fff;"  onclick="placeOrder()">Place Order</a>
 
-            <p class="caption-large" style="padding-top: 5rem;padding-bottom: 2rem;">Top Sellers</p>
-
-
-            <div class="row promotional ">
-
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 product-box" onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
+                <div class="l-12 m-12 s-12" style="height:2rem;"></div>
             </div>
         </div>
 
-
-        <div class="parallax" id="parallax2">
-
-            <div class="center-element">
-                <a href="Products.xhtml">
-                    <span class="caption parallax-text">View Sales Now</span>
-                </a>
-            </div>
-
-        </div>
-
-        <div class="section-white">
-            <div class="container">
-                <div class="promotional" style="width:100%;margin-bottom:30px;">
-                    <p class="caption">Cycle To Work Schemes</p>
-                    <p class="light">
-                        Enjoy flying up hills? Start with our range of road bikes.
-                        Or if it's all about tracks and trails, head to our mountain bikes for a mix of hardtail and
-                        full suspension machines. <br />
-                        We've even got a full range of hybrid bikes, which includes several folding bikes - ideal if
-                        you're taking the train or you're short on storage space.<br /><br />
-                        Still not sure which bike is for you? Pop into one of our UK bike stores where our friendly
-                        staff will help, or use our super handy right bike finder tool.
-                        We also stock all the clothing and accessories you'll ever need, as well as a wide range of
-                        parts and components to keep your bike in tip-top condition. <br />
-                        Enjoy the Ride!
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="parallax" id="parallax3"></div>
+        <div class="parallax" id="parallax2"></div>
 
         <div class="footer"></div>
         <div class="footer-bot"></div>

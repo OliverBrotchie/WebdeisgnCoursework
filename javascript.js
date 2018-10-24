@@ -6,13 +6,18 @@ var loggedIn = false;
 var logInDetails;
 var clicks = 0;
 var inputType = 1;
+var product;
 
 //called on loading the page
 function loadDoc() {
     getEngine();
     retiveProducts();
+    if (window.location.href.includes("Products.xhtml")) {
+        returnProducts();
+    }
     activeTab(1);
     activeTab(5);
+
     activeTab(11);
 
     circularize();
@@ -32,29 +37,92 @@ function loadDoc() {
     }
 
 
-   document.getElementById('snav-1').addEventListener('mouseup', checkDoubleClick("bike"), false);
-   document.getElementById('snav-2').addEventListener('mouseup', checkDoubleClick("accesories"), false);
-   document.getElementById('snav-3').addEventListener('mouseup', checkDoubleClick("tools"), false);
+    document.getElementById('snav-1').addEventListener('mouseup', checkDoubleClick("bike"), false);
+    document.getElementById('snav-2').addEventListener('mouseup', checkDoubleClick("accesories"), false);
+    document.getElementById('snav-3').addEventListener('mouseup', checkDoubleClick("tools"), false);
 }
 
-function setActive(id){
+
+
+function setActive(id) {
     var x = document.getElementById(id).previousElementSibling;
-    if(x.classList.contains("textActive")){
+    if (x.classList.contains("textActive")) {
         x.classList.remove("textActive");
     } else {
         x.classList.add("textActive");
     }
 }
 
-function loginContent(type){
-    if(type == 1){
-        document.getElementById("loginContent1").style.display = "block"
-        document.getElementById("loginContent2").style.display = "none"
-        inputType=1;
+function retunResult() {
+    switch (modalType) {
+        case 1:
+            checkout();
+            break;
+        case 2:
+            determineLoginType();
+            break;
+    }
+
+}
+
+function determineLoginType() {
+    if (document.getElementById("loginTab").classList.contains("active")) {
+        if (document.getElementById("username").value == "" || document.getElementById("password").value == "") {
+            alert("Please enter both your username or password to login");
+        } else {
+
+        }
     } else {
-        document.getElementById("loginContent2").style.display = "block"
-        document.getElementById("loginContent1").style.display = "none"
-        inputType=2;
+        if (document.getElementById("usernameS").value == "" || document.getElementById("passwordS").value == "" || document.getElementById("name").value == "" || document.getElementById("email").value == "") {
+            alert("Please enter values for all the fields");
+        } else {
+
+        }
+    }
+}
+
+function checkout() {
+    window.open("Checkout.xhtml#" + modalData[0] + "," + modalData[3], "_self");
+}
+
+function loadProduct() {
+    if (window.location.href.includes("#")) {
+        var x = window.location.href.split("#")[1];
+        if (x.includes(",")) {
+            x = x.split(",");
+            product = x;
+        }
+    }
+
+    if (product != null) {
+        document.getElementById('productName').innerHTML = "Product name: " + "\u00a0" + product[0];
+        document.getElementById('price').innerHTML = "Price per item: " + "\u00a0" + product[1];
+    }
+}
+
+function loginContent(type) {
+    if (type == 1) {
+        document.getElementById("loginContent1").style.display = "block";
+        document.getElementById("loginContent2").style.display = "none";
+        inputType = 1;
+    } else {
+        document.getElementById("loginContent2").style.display = "block";
+        document.getElementById("loginContent1").style.display = "none";
+        inputType = 2;
+    }
+}
+
+function placeOrder() {
+    if (loggedIn == false) {
+        alert("Please login or sign up before purchasing a product");
+    } else if (product == null) {
+        alert("Please select a product before trying to purchase one");
+    } else {
+        if (document.getElementById("adress").value == "" || document.getElementById("postCode").value == "" || document.getElementById("number").value == "" || document.getElementById("quantity").value == "") {
+            alert("Please fill in all fields");
+        } else {
+
+        }
     }
 }
 
@@ -64,7 +132,7 @@ function openLogin() {
         window.open("Account.xhtml", "_self");
     } else {
         openModal(0, 2);
-
+        setloginName("testuser")
     }
 }
 
@@ -117,7 +185,7 @@ function activeTab(tab) {
         for (i = 1; i <= 4; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
         }
-    } else if(tab < 11){
+    } else if (tab < 11) {
         for (i = 5; i <= 10; i++) {
             document.getElementById("tab-" + i).classList.remove('active');
         }
@@ -223,7 +291,7 @@ function openExtender(type, productType) {
 //used for displaying products in the sidenav
 function displayImages(number) {
 
-    for (i = 0; i <= 5; i++) {
+    for (i = 0; i <= number; i++) {
         productBoxes[i].style.display = "none";
     }
     for (i = 0; i <= number - 1; i++) {
@@ -299,8 +367,10 @@ function closeNav() {
     }, 500);
 
     closeSearch();
+    if (!(window.location.href.includes("Products.xhtml"))) {
+        displayImages(0);
+    }
 
-    displayImages(0);
 
 
     for (i = 1; i <= 3; i++) {
@@ -479,9 +549,7 @@ function retiveProducts() {
     xhttp.open("GET", "productlist.text", true);
     xhttp.send();*/
 
-    splitProducts("response1,bike,This is a description for response one,$100,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg;response2,bike,this is a description for response two,$600,/Users/obrot/Documents/GitHub/movedWebsite/media/bikeimage.jpg")
-
-
+    splitProducts("response1,bike,This is a description for response one,$100,media/bikeimage.jpg,1;response2,bike,this is a description for response two,$600,media/bikeimage.jpg,2")
 
 }
 
@@ -492,10 +560,10 @@ function splitProducts(result) {
     for (i = 0; i <= result.length - 1; i++) {
         var temp = result[i];
         temp = temp.split(",");
-        products.push([temp[0], temp[1], temp[2], temp[3], temp[4]]);
+        products.push([temp[0], temp[1], temp[2], temp[3], temp[4], temp[5]]);
     }
 
-    //name,type,description,price,image
+    //name,type,description,price,image,id
 }
 
 //displays products of spesified type
@@ -503,35 +571,38 @@ function displayProducts(type, max) {
     var counter = 0;
     var displayedImages;
 
-
-    if (!(products.length == 0)) {
-
-
-        for (var i = 0; i <= products.length - 1; i++) {
-
-
-            if (products[i][1] == type && counter <= max - 1) {
-
-                productBoxes[counter].addEventListener("click", bindOnClick(counter));
+    if (window.location.href.includes("Products.xhtml")) {
+        returnProducts();
+    } else {
+        if (!(products.length == 0)) {
 
 
-                productBoxes[counter].children[0].src = products[i][4];
-                productBoxes[counter].children[1].innerHTML = products[i][0];
-                productBoxes[counter].children[2].innerHTML = products[i][3];
-
-                closeModal();
+            for (var i = 0; i <= products.length - 1; i++) {
 
 
+                if (products[i][1] == type && counter <= max - 1) {
 
-                counter++;
+                    productBoxes[counter].addEventListener("click", bindOnClick(counter));
+
+
+                    productBoxes[counter].children[0].src = products[i][4];
+                    productBoxes[counter].children[1].innerHTML = products[i][0];
+                    productBoxes[counter].children[2].innerHTML = products[i][3];
+
+                    closeModal();
+
+
+
+                    counter++;
+                }
             }
+
+            displayImages(max);
+
+
         }
 
-
-        displayImages(max);
     }
-
-
 
 }
 
@@ -542,54 +613,6 @@ function bindOnClick(counter) {
     };
 }
 
+function returnProducts() {
 
-
-
-
-//Adds hoverable functionality to all elements of the hoverable class
-/*function hoverable() {
-    var x = document.getElementsByClassName("hoverable");
-    var parent;
-    var child;
-
-    for (i = 0; i < x.length; i++) {
-        child = x[i];
-        parent = child.parentNode;
-
-        if (parent.classList.contains("large") && !isTouchDevice("mobile")) {
-            var sibling = parent.nextElementSibling;
-
-            parent.style.paddingBottom = parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))) +0.5 + "px";
-
-            child.style.height = ((parent.offsetHeight * (1 - (parent.offsetHeight / (sibling.offsetHeight * 2))))+0.5) + parent.offsetHeight + "px";
-            child.style.width = parent.offsetWidth + "px";
-        } else {
-            child.style.height = parent.offsetHeight + "px";
-            child.style.width = parent.offsetWidth + "px";
-        }
-        
-
-
-        setTimeout(function () {
-            child.classList.remove('fadeOut');
-        }, 500);
-
-    }
-
-    //Event handler variables operate weirdly in javascript so it must be initiated individually
-
-    x[0].addEventListener("mouseleave", function (event) {
-        x[0].classList.add('fadeOut');
-    })
-
-
-    x[1].addEventListener("mouseleave", function (event) {
-        x[1].classList.add('fadeOut');
-    })
-
-    x[2].addEventListener("mouseleave", function (event) {
-        x[2].classList.add('fadeOut');
-    })
-
-
-}*/
+}
