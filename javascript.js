@@ -7,12 +7,14 @@ var logInDetails;
 var clicks = 0;
 var inputType = 1;
 var product;
+var returnedProducts= new Array();
 
 //called on loading the page
 function loadDoc() {
     getEngine();
     retiveProducts();
     if (window.location.href.includes("Products.xhtml")) {
+        displayProducts("any",productBoxes.length)
         returnProducts();
     }
     activeTab(1);
@@ -289,12 +291,13 @@ function openExtender(type, productType) {
 }
 
 //used for displaying products in the sidenav
-function displayImages(number) {
+function displayImages(number,max) {
 
-    for (i = 0; i <= number; i++) {
+    for (i = 0; i < max; i++) {
+    
         productBoxes[i].style.display = "none";
     }
-    for (i = 0; i <= number - 1; i++) {
+    for (i = 0; i < number; i++) {
         productBoxes[i].style.display = "inherit";
     }
 
@@ -368,7 +371,7 @@ function closeNav() {
 
     closeSearch();
     if (!(window.location.href.includes("Products.xhtml"))) {
-        displayImages(0);
+        displayImages(0,16);
     }
 
 
@@ -569,38 +572,34 @@ function splitProducts(result) {
 //displays products of spesified type
 function displayProducts(type, max) {
     var counter = 0;
-    var displayedImages;
 
-    if (window.location.href.includes("Products.xhtml")) {
-        returnProducts();
-    } else {
-        if (!(products.length == 0)) {
+    if (!(products.length == 0)) {
 
 
-            for (var i = 0; i <= products.length - 1; i++) {
+        for (var i = 0; i <= products.length - 1; i++) {
 
 
-                if (products[i][1] == type && counter <= max - 1) {
+            if ((products[i][1] == type || type == "any")&& counter <= max - 1) {
 
-                    productBoxes[counter].addEventListener("click", bindOnClick(counter));
+                productBoxes[counter].addEventListener("click", bindOnClick(counter));
 
 
-                    productBoxes[counter].children[0].src = products[i][4];
-                    productBoxes[counter].children[1].innerHTML = products[i][0];
-                    productBoxes[counter].children[2].innerHTML = products[i][3];
+                productBoxes[counter].children[0].src = products[i][4];
+                productBoxes[counter].children[1].innerHTML = products[i][0];
+                productBoxes[counter].children[2].innerHTML = products[i][3];
 
-                    closeModal();
+                closeModal();
 
 
 
-                    counter++;
-                }
+                counter++;
             }
-
-            displayImages(max);
-
-
         }
+
+        displayImages(counter,max);
+
+
+    
 
     }
 
@@ -614,5 +613,81 @@ function bindOnClick(counter) {
 }
 
 function returnProducts() {
+    var searchTerm;
+    var searchBoxes = document.getElementsByClassName("searchProduct");
 
+    if (!(products.length == 0)) {
+
+        if(window.location.href.includes("#")){
+
+            document.getElementById("searchResults").style.display = "block";
+
+            
+            searchTerm = window.location.href.split("#")[1].toString().toLowerCase();
+            
+            searchForProducts(searchTerm);
+
+            if(searchTerm.search("s")==searchTerm.length-1){
+                searchForProducts(searchTerm.replace("s",""));
+            }
+
+
+            if(searchTerm.search("es")==searchTerm.length-2){
+                searchForProducts(searchTerm.replace("es",""));
+            }
+            
+
+        }
+        for(var i = 0; i<searchBoxes.length;i++){
+            searchBoxes[i].style.display="none";
+        }
+
+        if (!(returnedProducts.length == 0)) {
+            document.getElementById("searchResultsTitle").innerHTML = "Search Results:"
+
+            /*removes duplicates
+            for(var i = 0; i<returnedProducts.length;i++){
+                for(var j = i; j<returnedProducts.length;j++){
+                    if(returnedProducts[j][5]==returnedProducts[i][5]){
+
+                        returnedProducts.splice(j, 1);
+                    }
+                }
+            }*/
+
+            returnedProducts = returnedProducts.filter(function(item, position, self) {
+                return self.indexOf(item) == position;
+            })
+
+            for(var i = 0; i<returnedProducts.length;i++){
+                
+                searchBoxes[i].addEventListener("click", bindOnClick(i));
+
+
+                searchBoxes[i].children[0].src = returnedProducts[i][4];
+                searchBoxes[i].children[1].innerHTML = returnedProducts[i][0];
+                searchBoxes[i].children[2].innerHTML = returnedProducts[i][3];
+
+                searchBoxes[i].style.display="block";
+            }
+        } else{
+            document.getElementById("searchResultsTitle").innerHTML = "Sorry no products were found matching the description of:  '" + searchTerm + "'";
+        }
+    
+    }
 }
+
+function searchForProducts(searchTerm) {
+
+    for(var i = 0; i<products.length;i++){
+
+        for(var j = 0; j<products[i].length;j++){
+            if(products[i][j].toLowerCase().includes(searchTerm)){
+                returnedProducts.push(products[i])
+            } 
+        }
+    }
+}
+
+
+

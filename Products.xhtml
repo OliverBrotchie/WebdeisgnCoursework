@@ -6,14 +6,14 @@
 <head>
 
     <title>Ayre</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-32"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-32" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Oliver Brotchie, Seamus Mullan" />
     <meta name="description" content="The online retail store for all your Biking needs!" />
     <meta name="keywords" content="cycle, cycling, bike, biking, bicycle, bikes, bicycles,store, maintenance" />
     <meta name="robots" content="index, follow" />
 
-    <link rel="icon" type="image/png" href="media/icon.png"/>
+    <link rel="icon" type="image/png" href="media/icon.png" />
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -43,11 +43,11 @@
 
         <li><a id="loginMobile" onclick="openLogin()" class="noStyle">Login/Sign Up</a></li>
 
-        <li><a id="s-nav-1"  href="Products.xhtml#Bikes" class="noStyle">Bikes</a></li>
+        <li><a id="s-nav-1" href="Products.xhtml#Bikes" class="noStyle">Bikes</a></li>
 
-        <li><a id="s-nav-2"  href="Products.xhtml#Accesories" class="noStyle">Accesories</a></li>
+        <li><a id="s-nav-2" href="Products.xhtml#Accesories" class="noStyle">Accesories</a></li>
 
-        <li><a id="s-nav-3"  href="Products.xhtml#Tools" class="noStyle">Tools</a></li>
+        <li><a id="s-nav-3" href="Products.xhtml#Tools" class="noStyle">Tools</a></li>
 
 
     </ul>
@@ -126,37 +126,43 @@
         <div id="modal2" style="display:none" class="container">
             <div class="row">
                 <div class="l-12 m-12 s-12">
-                        <div class="l-6 m-6 s-12">
-                            <div id="loginTab" onclick="activeTab(11);loginContent(1)" class="tab"><a class="tab-link">Login</a></div>
-                            <div id="signUpTab" onclick="activeTab(12);loginContent(2)" class="tab"><a class="tab-link">Sign Up</a></div>
-                        </div>
+                    <div class="l-6 m-6 s-12">
+                        <div id="loginTab" onclick="activeTab(11);loginContent(1)" class="tab"><a class="tab-link">Login</a></div>
+                        <div id="signUpTab" onclick="activeTab(12);loginContent(2)" class="tab"><a class="tab-link">Sign
+                                Up</a></div>
+                    </div>
                 </div>
                 <div id="loginContent1">
                     <div class="input-field l-6">
                         <label for="username">Username:</label>
-                        <input type="text" id="username" onfocusout="setActive('username')"  onfocus="setActive('username')" class="textInput"/>
+                        <input type="text" id="username" onfocusout="setActive('username')" onfocus="setActive('username')"
+                            class="textInput" />
                     </div>
                     <div class="input-field l-6">
                         <label for="password">Password:</label>
-                        <input type="password" id="password"  onfocusout="setActive('password')"  onfocus="setActive('password')" class="textInput"/>
+                        <input type="password" id="password" onfocusout="setActive('password')" onfocus="setActive('password')"
+                            class="textInput" />
                     </div>
                 </div>
                 <div id="loginContent2" style="display:none;">
                     <div class="input-field l-6">
                         <label for="usernameS">Username:</label>
-                        <input type="text" id="usernameS" onfocusout="setActive('usernameS')"  onfocus="setActive('usernameS')" class="textInput"/>
+                        <input type="text" id="usernameS" onfocusout="setActive('usernameS')" onfocus="setActive('usernameS')"
+                            class="textInput" />
                     </div>
                     <div class="input-field l-6">
                         <label for="passwordS">Password:</label>
-                        <input type="password" id="passwordS"  onfocusout="setActive('passwordS')"  onfocus="setActive('passwordS')" class="textInput"/>
+                        <input type="password" id="passwordS" onfocusout="setActive('passwordS')" onfocus="setActive('passwordS')"
+                            class="textInput" />
                     </div>
                     <div class="input-field l-6">
                         <label for="name">Name:</label>
-                        <input type="text" id="name"  onfocusout="setActive('name')"  onfocus="setActive('name')" class="textInput"/>
+                        <input type="text" id="name" onfocusout="setActive('name')" onfocus="setActive('name')" class="textInput" />
                     </div>
                     <div class="input-field l-6">
                         <label for="email">Email:</label>
-                        <input type="email" id="email"  onfocusout="setActive('email')"  onfocus="setActive('email')" class="textInput"/>
+                        <input type="email" id="email" onfocusout="setActive('email')" onfocus="setActive('email')"
+                            class="textInput" />
                     </div>
                 </div>
             </div>
@@ -172,156 +178,154 @@
         <div class="parallax" id="parallax1"></div>
 
         <div class="section-white row container">
-            <div class="l-1 m-1 s-0" height="1px"></div>
-            <div class="l-11 m-11 s-12">
-                <p class="caption-large" style="text-align:left">Results:</p>
-            </div>
-            <div class="promotional ">
+            <div id="searchResults" style="display:none">
+                <div class="l-12 m-12 s-12">
+                    <div class="caption" id="searchResultsTitle" style="text-align:left;padding-bottom:2rem;overflow-x:visible;">Results:</div>
+                </div>
+                <div class="promotional ">
 
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-            </div>
-            <div class="promotional " style="padding-top:20px">
-
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-            </div>
-
-
-            <div class="l-1 m-1 s-0" style="height:1px;padding-top:3rem;"></div>
-            <div class="l-11 m-11 s-12">
-                <p class="caption-large">All Products</p>
-            </div>
-
-
-            <div class="promotional ">
-                <div class="l-3 m-6 s-12" onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-            </div>
-            <div class="promotional " style="padding-top:20px">
-
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-                <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
-                    <p class="product-title">Lorem Ipsum</p>
-                    <p class="light">$220</p>
-                </div>
-            </div>
-            
-
-            <div class="promotional ">
-                    <div class="l-3 m-6 s-12" onclick="openModal(0,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(0,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
-                    <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(1,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
-                    <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(0,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
-                    <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(1,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
                 </div>
                 <div class="promotional " style="padding-top:20px">
-    
-                    <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(0,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
-                    <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(1,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
-                    <div class="l-3 m-6 s-12 " onclick="openModal(0,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(0,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
-                    <div class="l-3 m-6 s-12 " onclick="openModal(1,1)">
-                        <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <div class="l-3 m-6 s-12 searchProduct" onclick="openModal(1,1)">
+                        <img src="media/bikeimage.jpg" class="img image-product " alt="picture of bike" />
                         <p class="product-title">Lorem Ipsum</p>
                         <p class="light">$220</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="l-12 m-12 s-12">
+                <div class="caption" style="text-align:left;padding-bottom:2rem;overflow-x:visible;">All Products:</div>
+            </div>
+
+            <div class="promotional ">
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+            </div>
+            <div class="promotional " style="padding-top:20px">
+
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+            </div>
+
+
+            <div class="promotional ">
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+            </div>
+            <div class="promotional " style="padding-top:20px">
+
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(0,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+                <div class="l-3 m-6 s-12 product" onclick="openModal(1,1)">
+                    <img src="media/bikeimage.jpg" class="img image-product" alt="picture of bike" />
+                    <p class="product-title">Lorem Ipsum</p>
+                    <p class="light">$220</p>
+                </div>
+            </div>
         </div>
         <div class="parallax" id="parallax2"></div>
 
