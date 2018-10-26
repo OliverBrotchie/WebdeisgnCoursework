@@ -1,3 +1,5 @@
+//created by Oliver Brotchie (ob10)
+
 //global variables (This is bad code design but its also a lot easier/nessesary for a lot of the funcitons)
 var products = new Array();
 var productBoxes = document.getElementsByClassName("product");
@@ -574,17 +576,6 @@ function getEngine() {
 
 //retrieves the products from the server 
 function retiveProducts() {
-    /*var xhttp = new XMLHttpRequest();
-    var text;
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            text = this.responseText;
-
-            
-        }
-    };
-    xhttp.open("GET", "productlist.text", true);
-    xhttp.send();*/
 
     //currently taking dummy values
     splitProducts("response1,bike,This is a description for response one,$100,media/bikeimage.jpg,1;response2,bike,this is a description for response two,$600,media/bikeimage.jpg,2")
