@@ -596,7 +596,7 @@ function splitProducts(result) {
     for (i = 0; i <= result.length - 1; i++) {
         var temp = result[i];
         temp = temp.split(",");
-        products.push([temp[0], temp[1], temp[2], "$"+temp[3], temp[4], temp[5]]);
+        products.push([temp[0], temp[1], temp[2], "$"+ temp[3], temp[4], temp[5]]);
     }
 
     //name,type,description,price,image,id
