@@ -465,7 +465,7 @@ function findBot(id) {
 //This section of code minimises the topnav bar on mobile devices when scrolling down the page to maximise space on the small screen space
 function scrollNav(mobile, tablet, desktop) {
     var navBottom = findBot("topNav");
-    
+
     if ((mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false) && navOpen == false) {
         // handles scrolling down
         if (window.pageYOffset > prevOffset) {
@@ -596,7 +596,7 @@ function splitProducts(result) {
     for (i = 0; i <= result.length - 1; i++) {
         var temp = result[i];
         temp = temp.split(",");
-        products.push([temp[0], temp[1], temp[2], temp[3], temp[4], temp[5]]);
+        products.push([temp[0], temp[1], temp[2], "$"+temp[3], temp[4], temp[5]]);
     }
 
     //name,type,description,price,image,id
