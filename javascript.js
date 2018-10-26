@@ -1,3 +1,4 @@
+//global variables (This is bad code design but its also a lot easier/nessesary for a lot of the funcitons)
 var products = new Array();
 var productBoxes = document.getElementsByClassName("product");
 var modalData;
@@ -9,6 +10,17 @@ var inputType = 1;
 var product;
 var returnedProducts= new Array();
 
+
+
+//variables needed for my scrolling nav function
+var nav = document.getElementById("topNav");
+var prevOffset = 0;
+var scrolled = false;
+var initialScroll = false;
+var navOpen = false;
+window.onscroll = function () { scrollNav(true, false, false) };
+
+
 //called on loading the page
 function loadDoc() {
     getEngine();
@@ -17,19 +29,24 @@ function loadDoc() {
         displayProducts("any",productBoxes.length)
         returnProducts();
     }
+
+    //sets the active tabs on the modal
     activeTab(1);
     activeTab(5);
-
     activeTab(11);
 
     circularize();
 
     //login();
 
+    //handles searching
     document.getElementById("searchBox").addEventListener("keypress", function (event) {
         var key = event.which || event.keyCode;
         if (key === 13) { // 13 is enter
-            window.open("https://www.google.co.uk/search?q=" + document.getElementById("searchBox").value, "_self");
+            window.open("Products.xhtml#" + document.getElementById("searchBox").value, "_self");
+            if(window.location.href.includes("Products.xhtml")){
+                window.location.reload(true);
+            }
         }
     })
 
@@ -38,23 +55,44 @@ function loadDoc() {
         window.open("https://www.google.com/chrome/", "_self");
     }
 
-
+    //binds a double click funciton to the snav items
     document.getElementById('snav-1').addEventListener('mouseup', checkDoubleClick("bike"), false);
     document.getElementById('snav-2').addEventListener('mouseup', checkDoubleClick("accesories"), false);
     document.getElementById('snav-3').addEventListener('mouseup', checkDoubleClick("tools"), false);
 }
 
+//used for searching when already on the products page
+function reload(data){
+    window.open("Products.xhtml#" + data, "_self");
+    window.location.reload(true);
+}
 
-
+//Gives text inputs a pretty animation
 function setActive(id) {
-    var x = document.getElementById(id).previousElementSibling;
-    if (x.classList.contains("textActive")) {
-        x.classList.remove("textActive");
+
+    var x = document.getElementById(id)
+    x.previousElementSibling.classList.add("textActive");
+
+    monitorFocus(x);
+}
+
+
+function removeActive(x){
+    x.previousElementSibling.classList.remove("textActive");
+}
+
+//had to write my own "onfocusout=" function because xhtml dosent support it
+function monitorFocus(x){
+    if(x == document.activeElement){
+        setTimeout(function () {
+            monitorFocus(x);
+        }, 100);
     } else {
-        x.classList.add("textActive");
+        removeActive(x);
     }
 }
 
+//used to determine the type of modal that is opened
 function retunResult() {
     switch (modalType) {
         case 1:
@@ -67,6 +105,7 @@ function retunResult() {
 
 }
 
+//used to determine whether the user is logging in or signing up
 function determineLoginType() {
     if (document.getElementById("loginTab").classList.contains("active")) {
         if (document.getElementById("username").value == "" || document.getElementById("password").value == "") {
@@ -83,25 +122,33 @@ function determineLoginType() {
     }
 }
 
+//takes the data from the modal and sends it to the checkout page
 function checkout() {
     window.open("Checkout.xhtml#" + modalData[0] + "," + modalData[3], "_self");
 }
 
+//used at checkout to grab the correct product and display it
 function loadProduct() {
     if (window.location.href.includes("#")) {
         var x = window.location.href.split("#")[1];
         if (x.includes(",")) {
             x = x.split(",");
-            product = x;
+
+            for(var i = 0; i<products.length;i++){
+                if(products[i][0].toLowerCase().includes(x[0])){
+                    product = products[i];
+                }
+            }
         }
     }
 
     if (product != null) {
         document.getElementById('productName').innerHTML = "Product name: " + "\u00a0" + product[0];
-        document.getElementById('price').innerHTML = "Price per item: " + "\u00a0" + product[1];
+        document.getElementById('price').innerHTML = "Price per item: " + "\u00a0" + product[3];
     }
 }
 
+//switches sign in/sign up content
 function loginContent(type) {
     if (type == 1) {
         document.getElementById("loginContent1").style.display = "block";
@@ -114,6 +161,7 @@ function loginContent(type) {
     }
 }
 
+//Places the order
 function placeOrder() {
     if (loggedIn == false) {
         alert("Please login or sign up before purchasing a product");
@@ -128,25 +176,26 @@ function placeOrder() {
     }
 }
 
-
+//fired when the login button is clicked
 function openLogin() {
     if (loggedIn) {
         window.open("Account.xhtml", "_self");
     } else {
         openModal(0, 2);
-        setloginName("testuser")
+        setloginName("testuser");
     }
 }
 
+//sets the login button text
 function setloginName(username) {
     document.getElementById("login").innerHTML = username;
     document.getElementById("loginMobile").innerHTML = username;
     loggedIn = true;
 }
 
-
+//used to bind a double click funciton
 function checkDoubleClick(data) {
-    return function (data) {
+    return  function () {
         clicks++;
         setTimeout(function () {
             if (clicks > 1) {
@@ -160,11 +209,12 @@ function checkDoubleClick(data) {
 
 }
 
-
+//this function fires when a double click is registered
 function DoubleClick(data) {
     window.open("Products.xhtml#" + data, "_self");
 }
 
+//used instead of a link so that is the user is already home it dosent reload the page
 function goHome() {
     if (!(window.location.href.includes("Home.xhtml"))) {
         window.open("Home.xhtml", "_self");
@@ -216,15 +266,15 @@ function activeTab(tab) {
             break;
         case 2:
             document.getElementById("tab-2").classList.add('active');
-            document.getElementById("tab-text").innerHTML = "Lorem ipsum dolor sit amet, ne suas periculis vim, qui dicta mediocrem ex. Sit viris moderatius eloquentiam id, dictas forensibus ut vim, quo probo insolens ea. Cum et essent fierent definitionem, in graeco malorum ius. Vidit deserunt eu est. Eam populo nusquam et, at inani euismod tractatos vis.";
+            document.getElementById("tab-text").innerHTML = "A full specs list will be given inside the product manual";
             break;
         case 3:
             document.getElementById("tab-3").classList.add('active');
-            document.getElementById("tab-text").innerHTML = "The Right Bike Guarantee lets you return any new bike within 30 days and swap it for a different one. <br/><br/> If you're not happy with your new bike for any reason, just bring it back to one of our stores and we'll exchange it as long as it's clean and isn't broken - by this we mean things like buckled wheels, crash damage, broken components, cracked frames etc. Worn brakes and tyres are acceptable."
+            document.getElementById("tab-text").innerHTML = "Any product may be returned for a full refund as long as its undamaged."
             break;
         case 4:
             document.getElementById("tab-4").classList.add('active');
-            document.getElementById("tab-text").innerHTML = "The best way to find out what size of frame you should get is to come in store and try the bike out yourself!"
+            document.getElementById("tab-text").innerHTML = "Sizing only available for bottles. Sizes range from 250ml at xx-small to 4000ml at x-large"
             break;
 
         case 5:
@@ -267,15 +317,6 @@ function openNav() {
     navOpen = true;
 }
 
-
-
-
-
-
-
-
-
-
 //opens the side nav extension
 function openExtender(type, productType) {
     translateElement("navExtended", 0, "x");
@@ -313,7 +354,7 @@ function closeModal() {
 
 }
 
-
+//used to open the modal 
 function openModal(id, type) {
 
     document.getElementById("modal1").style.display = "none";
@@ -346,6 +387,7 @@ function closeOverlay(overlayID) {
 
 }
 
+//closes inputed overlay
 function openOverlay(overlayID) {
     document.getElementById(overlayID).style.display = "block";
 
@@ -371,7 +413,7 @@ function closeNav() {
 
     closeSearch();
     if (!(window.location.href.includes("Products.xhtml"))) {
-        displayImages(0,16);
+        displayImages(0,6);
     }
 
 
@@ -396,6 +438,7 @@ function closeSearch() {
     document.getElementById("magnify").style.color = "#fff";
 }
 
+// changes the look of the search box when it is selected
 function activateSearch() {
     document.getElementById("searchBar").style.backgroundColor = "#fff";
     document.getElementById("searchBar").style.color = "rgba(0,0,0,0.87)";
@@ -414,26 +457,15 @@ function translateElement(id, end, axis) {
 
 }
 
-//This section of code minimises the top nav bar on mobile devices to maximise on the small screen space
-// Whilst Global variables are messy, they are nessisary for this functionality
-
-var nav = document.getElementById("topNav");
-var navBottom = findBot("topNav");
-var prevOffset = 0;
-var scrolled = false;
-var initialScroll = false;
-var navOpen = false;
-
-window.onscroll = function () { scrollNav(true, false, false) };
-
-
+//finds the bottom px of an element
 function findBot(id) {
     return document.getElementById(id).offsetTop + document.getElementById(id).offsetHeight;
 }
 
-
+//This section of code minimises the topnav bar on mobile devices when scrolling down the page to maximise space on the small screen space
 function scrollNav(mobile, tablet, desktop) {
-
+    var navBottom = findBot("topNav");
+    
     if ((mobile == true && isTouchDevice("mobile") || tablet == true && isTouchDevice("tablet") || desktop == true && isTouchDevice() == false) && navOpen == false) {
         // handles scrolling down
         if (window.pageYOffset > prevOffset) {
@@ -538,7 +570,7 @@ function getEngine() {
 }
 
 
-//currently taking a dummy value
+//retrieves the products from the server 
 function retiveProducts() {
     /*var xhttp = new XMLHttpRequest();
     var text;
@@ -552,6 +584,7 @@ function retiveProducts() {
     xhttp.open("GET", "productlist.text", true);
     xhttp.send();*/
 
+    //currently taking dummy values
     splitProducts("response1,bike,This is a description for response one,$100,media/bikeimage.jpg,1;response2,bike,this is a description for response two,$600,media/bikeimage.jpg,2")
 
 }
@@ -569,7 +602,7 @@ function splitProducts(result) {
     //name,type,description,price,image,id
 }
 
-//displays products of spesified type
+//displays products of spesified type in all available boxes marked with the product class
 function displayProducts(type, max) {
     var counter = 0;
 
@@ -612,6 +645,7 @@ function bindOnClick(counter) {
     };
 }
 
+//This handles searching for products on the products page
 function returnProducts() {
     var searchTerm;
     var searchBoxes = document.getElementsByClassName("searchProduct");
@@ -623,8 +657,9 @@ function returnProducts() {
             document.getElementById("searchResults").style.display = "block";
 
             
-            searchTerm = window.location.href.split("#")[1].toString().toLowerCase();
+            searchTerm = window.location.href.split("#")[1].toString().toLowerCase().replace("%20", "");;
             
+            //searches for products relating to the given search term
             searchForProducts(searchTerm);
 
             if(searchTerm.search("s")==searchTerm.length-1){
@@ -643,17 +678,9 @@ function returnProducts() {
         }
 
         if (!(returnedProducts.length == 0)) {
+
+            //displayes search results
             document.getElementById("searchResultsTitle").innerHTML = "Search Results:"
-
-            /*removes duplicates
-            for(var i = 0; i<returnedProducts.length;i++){
-                for(var j = i; j<returnedProducts.length;j++){
-                    if(returnedProducts[j][5]==returnedProducts[i][5]){
-
-                        returnedProducts.splice(j, 1);
-                    }
-                }
-            }*/
 
             returnedProducts = returnedProducts.filter(function(item, position, self) {
                 return self.indexOf(item) == position;
@@ -671,12 +698,14 @@ function returnProducts() {
                 searchBoxes[i].style.display="block";
             }
         } else{
+            //if there is no results returned it displays this
             document.getElementById("searchResultsTitle").innerHTML = "Sorry no products were found matching the description of:  '" + searchTerm + "'";
         }
     
     }
 }
 
+//searches for any products within the products array pretaining to the input variable
 function searchForProducts(searchTerm) {
 
     for(var i = 0; i<products.length;i++){
@@ -688,6 +717,3 @@ function searchForProducts(searchTerm) {
         }
     }
 }
-
-
-
