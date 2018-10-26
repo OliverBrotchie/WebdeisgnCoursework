@@ -161,6 +161,8 @@ function loginContent(type) {
     }
 }
 
+
+
 //Places the order
 function placeOrder() {
     if (loggedIn == false) {
