@@ -53,7 +53,7 @@ function loadDoc() {
     })
 
     //redirects user to a better browser
-    if (getEngine() == "IE" || getEngine() == "Safari" || getEngine() == "Unknown") {
+    if (getEngine() == "IE" || getEngine() == "Safari") {
         window.open("https://www.google.com/chrome/", "_self");
     }
 
